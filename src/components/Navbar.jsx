@@ -32,6 +32,17 @@ export default function Navbar() {
 
         return () => clearInterval(interval); // Bersihkan interval saat komponen unmount
     }, []);
+
+    const formattedTime = currentTime.toLocaleTimeString("id-ID", {
+      timeStyle: "medium"
+    });
+
+    const formattedDate = currentTime.toLocaleDateString("id-ID", {
+      weekday: "long",  // Nama hari (Senin, Selasa, dst.)
+      day: "2-digit",   // Tanggal (01, 02, dst.)
+      month: "short",    // Nama bulan (Januari, Februari, dst.)
+      year: "numeric"   // Tahun (2025, dst.)
+    });
   return (
     <nav className="navbar p-0 fixed-top d-flex flex-row">
       <div className="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
@@ -47,10 +58,8 @@ export default function Navbar() {
         >
           <span className="mdi mdi-menu" />
         </button>
-        <ul className="navbar-nav w-100">
-          <li className="nav-item w-100 border">
-            {currentTime.toLocaleTimeString()}
-          </li>
+        <ul className="navbar-nav w-100 d-flex justify-content-left">
+         <li className="nav-item">{formattedDate} - {formattedTime}</li>
         </ul>
         <ul className="navbar-nav navbar-nav-right">
           <li className="nav-item">
