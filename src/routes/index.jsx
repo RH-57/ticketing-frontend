@@ -18,6 +18,7 @@ import DetailTicket from '../views/admin/tiket/show'
 import Department from '../views/admin/departments'
 import DetailTrend from '../views/admin/detailTrend'
 import Division from '../views/admin/divisions'
+import NotFound from '../views/admin/notFound'
 export default function AppRoutes() {
     const {isAuthenticated} = useContext(AuthContext)
 
@@ -85,6 +86,10 @@ export default function AppRoutes() {
 
             <Route path="/admin/detail-trend" element={
                 isAuthenticated ? <DetailTrend /> : <Navigate to="/login" replace />
+            } />
+
+            <Route path="*" element={
+                <NotFound />
             } />
             
         </Routes>
