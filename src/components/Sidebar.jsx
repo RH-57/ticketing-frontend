@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom'
-import {useState, useEffect} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import {useState, useEffect, useContext} from 'react'
 import Cookies from 'js-cookie'
+import { AuthContext } from '../context/AuthContext'
 
 export default function Sidebar() {
     const [user, setUser] = useState([])
@@ -10,6 +11,17 @@ export default function Sidebar() {
             setUser(JSON.parse(userData))
         }
     }, [])
+
+    const navigate = useNavigate()
+    const {setIsAuthenticated} = useContext(AuthContext)
+    const handleLogout = () => {
+        Cookies.remove('token')
+        Cookies.remove('user')
+
+        setIsAuthenticated(false)
+
+        navigate("/login", {replace: true})
+    }
     return (
         <nav className="sidebar sidebar-offcanvas" id="sidebar">
             <div className="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
@@ -115,6 +127,14 @@ export default function Sidebar() {
                         </span>
                         <span className="menu-title">Tickets</span>
                     </a>
+                </li>
+                <li className="nav-item menu-items mt-auto">
+                    <button className="nav-link text-danger" onClick={handleLogout} style={{ border: 'none', background: 'none', width: '100%', textAlign: 'left' }}>
+                        <span className="menu-icon">
+                            <i className="mdi mdi-logout" />
+                        </span>
+                        <span className="menu-title">Logout</span>
+                    </button>
                 </li>
             </ul>
             </nav>
