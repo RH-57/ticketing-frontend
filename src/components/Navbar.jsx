@@ -93,16 +93,16 @@ export default function Navbar() {
             >
               <h6 className="p-3 mb-0">Profile</h6>
               <div className="dropdown-divider" />
-              <a className="dropdown-item preview-item">
+              <Link to="/admin/change-password" className="dropdown-item preview-item">
                 <div className="preview-thumbnail">
                   <div className="preview-icon bg-dark rounded-circle">
                     <i className="mdi mdi-settings text-success" />
                   </div>
                 </div>
                 <div className="preview-item-content">
-                  <p className="preview-subject mb-1">Settings</p>
+                  <p className="preview-subject mb-1">Change Password</p>
                 </div>
-              </a>
+              </Link>
               <div className="dropdown-divider" />
               <a className="dropdown-item preview-item">
                 <div className="preview-thumbnail">
