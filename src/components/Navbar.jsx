@@ -91,7 +91,7 @@ export default function Navbar() {
               className="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
               aria-labelledby="profileDropdown"
             >
-              <h6 className="p-3 mb-0">Profile</h6>
+              <h6 className="p-3 mb-0">Settings</h6>
               <div className="dropdown-divider" />
               <Link to="/admin/change-password" className="dropdown-item preview-item">
                 <div className="preview-thumbnail">
