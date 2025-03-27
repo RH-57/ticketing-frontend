@@ -138,7 +138,7 @@ export default function CreateTicket() {
     };
 
     const resetForm = () => {
-        setFormData({
+        setFormData((prevFormData) => ({
             title: "",
             branchId: "",
             divisionId: "",
@@ -147,11 +147,12 @@ export default function CreateTicket() {
             description: "",
             priority: "Medium",
             status: "Open",
-        });
-        setDivisions([]); // Reset divisions
-        setDepartments([]); // Reset departments
+            reportedById: prevFormData.reportedById, // Tetap menyimpan reportedById
+        }));
+        setDivisions([]); 
+        setDepartments([]);
         setEmployees([]);
-        setValidation({})
+        setValidation({});
     };
 
     const handleSubmit = async (e) => {
