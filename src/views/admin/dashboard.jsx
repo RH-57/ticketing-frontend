@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 import ChartTicket from './components/chartTicket'
 import ReportByType from './components/reportByType'
 import MostActiveDepartment from './components/mostActiveDepartment'
+import MostFreqTroubleComponents from './components/mostFreqTroubleComponents'
 import ChartInternet from './components/chartInternet'
 
 
@@ -118,6 +119,8 @@ export default function Dashboard() {
             }
         }
     }
+
+    
 
     useEffect(() => {
         fetchTotalTicket()
@@ -327,8 +330,9 @@ export default function Dashboard() {
                                 </div>
                             </div>
                         </div>
-                        <div className="row">
-                                <div className="col-md-4 grid-margin stretch-card px-1">
+                        <div className="wrapper">
+                            <div className="row">
+                                <div className="col-md-4 grid-margin stretch-card px-1 py-0">
                                     <div className="card">
                                         <div className="card-body">
                                             <div className="d-flex flex-row justify-content-between">
@@ -371,6 +375,20 @@ export default function Dashboard() {
                                         </div>
                                     </div>
                                 </div>
+                                <div className="col-md-4 grid-margin stretch-card px-1 pt-0">
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <div className="d-flex flex-row justify-content-between">
+                                                <h4 className="card-title mb-1">Komponen Sering Rusak</h4>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-12">
+                                                    <MostFreqTroubleComponents />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div className="col-md-4 grid-margin stretch-card px-1">
                                     <div className="card">
                                         <div className="card-body">
@@ -389,6 +407,7 @@ export default function Dashboard() {
                             </div>
                         </div>
                     {/* content-wrapper ends */}
+                    </div>
                     {/* partial:partials/_footer.html */}
                     <footer className="footer">
                         <Footer />

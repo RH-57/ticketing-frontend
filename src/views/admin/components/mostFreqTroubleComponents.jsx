@@ -2,26 +2,24 @@ import { useEffect, useState } from "react"
 import Cookies from "js-cookie"
 import api from "../../../services/api"
 
-export default function MostActiveDepartment() {
-    const [departments, setDepartments] = useState([])
+export default function MostFreqTroubleComponents() {
+    const [troubleComponents, setTroubleComponents] = useState('')
     const token = Cookies.get('token')
-    
-    const fetchDataDepartment = async () => {
+
+    const fetchMostFreqTroubleComponents = async () => {
         if(token) {
             api.defaults.headers.common['Authorization'] = token
             try {
-                const response = await api.get('/api/admin/dashboards/most-active-departments')
-                setDepartments(response.data.data.slice(0, 4))
+                const response = await api.get('/api/admin/dashboards/most-frequently-trouble-components')
+                setTroubleComponents(response.data.data)
             } catch (error) {
-                console.error(error)
+                console.error('Cannot fetch the Data', error)
             }
-        } else {
-            console.error('Token is not available')
         }
     }
 
     useEffect(() => {
-        fetchDataDepartment()
+        fetchMostFreqTroubleComponents()
     }, [])
 
     return (
@@ -30,17 +28,17 @@ export default function MostActiveDepartment() {
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Nama Departemen</th>
-                        <th>Total Tiket</th>
+                        <th>Nama Komponen</th>
+                        <th>Total Permasalahan</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {departments.length > 0 ? (
-                        departments.map((dept, index) => (
+                    {troubleComponents.length > 0 ? (
+                        troubleComponents.map((trouble, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{dept.department}</td> 
-                                <td>{dept.totalTickets}</td> 
+                                <td>{trouble.subSubCategories}</td> 
+                                <td>{trouble.totalReport}</td> 
                             </tr>
                         ))
                     ) : (
