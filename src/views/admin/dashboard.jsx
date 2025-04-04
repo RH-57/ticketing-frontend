@@ -10,7 +10,6 @@ import ChartTicket from './components/chartTicket'
 import ReportByType from './components/reportByType'
 import MostActiveDepartment from './components/mostActiveDepartment'
 import MostFreqTroubleComponents from './components/mostFreqTroubleComponents'
-import ChartInternet from './components/chartInternet'
 
 
 export default function Dashboard() {
@@ -321,7 +320,33 @@ export default function Dashboard() {
                                                         </div>
                                                     </div>
                                                     <h6 className="text-white font-weight-bold">
-                                                    Ticket
+                                                        Total Tiket
+                                                    </h6>
+                                                </div>
+                                            </div>                                                                                
+                                        </div>
+                                        <div className="col-md-4 col-sm-6 grid-margin stretch-card px-1 pt-0">
+                                            <div className="card">
+                                                <div 
+                                                    className="card-body"
+                                                    style={{
+                                                        background: "linear-gradient(to right,rgb(43, 43, 43),rgb(110, 110, 110))",
+                                                        color: "white",
+                                                    }}>
+                                                    <div className="row">
+                                                        <div className="col-8">
+                                                            <div className="d-flex align-items-center align-self-start">
+                                                            <h1 className="mb-0">{totalTicketClosed}</h1>
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-3">
+                                                            <div className="icon icon-box-secondary ">
+                                                                <span className="mdi mdi-thumb-up-outline icon-item" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <h6 className="text-white font-weight-bold">
+                                                        Tiket Ditutup
                                                     </h6>
                                                 </div>
                                             </div>                                                                                
@@ -384,21 +409,6 @@ export default function Dashboard() {
                                             <div className="row">
                                                 <div className="col-12">
                                                     <MostFreqTroubleComponents />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-md-4 grid-margin stretch-card px-1">
-                                    <div className="card">
-                                        <div className="card-body">
-                                            <div className="d-flex flex-row justify-content-between">
-                                                <h4 className="card-title mb-1">Trend</h4>
-                                                <Link to="/admin/detail-trend">Detail</Link>
-                                            </div>
-                                            <div className="row d-flex justify-content-center ">
-                                                <div className="col-12">
-                                                    
                                                 </div>
                                             </div>
                                         </div>
