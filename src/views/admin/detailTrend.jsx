@@ -27,27 +27,27 @@ export default function DetailTrend() {
                             <div className="col-md-6 col-sm-4 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
-                                                <DetailTrendTicket />
+                                        <DetailTrendTicket/>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-4 col-sm-4 grid-margin stretch-card px-1">
+                            <div className="col-md-3 col-sm-4 grid-margin stretch-card px-0">
                                 <div className="card">
                                     <div className="card-body">
-                                        <div className="d-flex flex-row justify-content-between">
-                                            <h4 className="card-title mb-1">Kategori</h4>
-                                        </div>
-                                        <div className="row d-flex justify-content-center ">
-                                            <div className="col-12">
-                                               <CategoryPieChart />
-                                            </div>
-                                        </div>
+                                        <CategoryPieChart />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-3 col-sm-4 grid-margin stretch-card px-1">
+                                <div className="card">
+                                    <div className="card-body">
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-12 grid-margin stretch-card px-1">
+                            <div className="col-6 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
                                         <SubCategoryChart />

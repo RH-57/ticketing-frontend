@@ -31,7 +31,8 @@ export default function CategoryPieChart() {
 
     return (
         <div className="container">
-            <div className="d-flex justify-content-right my-2">
+            <div className="d-flex justify-content-between gap-3">
+                <h4>Kategori</h4>
                 <select
                     className="form-select text-center w-auto bg-dark text-white border-0"
                     value={year}
@@ -45,8 +46,8 @@ export default function CategoryPieChart() {
                 </select>
             </div>
 
-            <div className="border p-2">
-                <ResponsiveContainer width="100%" height={300}>
+            <div>
+                <ResponsiveContainer width="100%" height={250}>
                     <PieChart>
                         <Pie
                             data={data}

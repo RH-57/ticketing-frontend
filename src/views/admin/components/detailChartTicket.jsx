@@ -68,32 +68,33 @@ export default function DetailTrendTicket() {
 
     return (
         <div className="container">
-            <div className="d-flex justify-content-between gap-3 my-2">
+            <div className="d-flex justify-content-between gap-3">
                 <h4>Trend</h4>
-                <select className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0" value={year} onChange={(e) => setYear(parseInt(e.target.value, 10))}>
-                    {[2023, 2024, 2025].map(y => (
-                        <option key={y} value={y}>{y}</option>
-                    ))}
-                </select>
+                <div>
+                    <select className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0" value={year} onChange={(e) => setYear(parseInt(e.target.value, 10))}>
+                        {[2023, 2024, 2025].map(y => (
+                            <option key={y} value={y}>{y}</option>
+                        ))}
+                    </select>
 
-                <select className="form-select text-center w-auto mx-1 bg-dark text-white border-0" value={category} onChange={(e) => setCategory(e.target.value)}>
-                    <option value="">Semua Kategori</option>
-                    {categories.map(cat => (
-                        <option key={cat.id} value={cat.id}>{cat.name}</option>
-                    ))}
-                </select>
-                <select className="form-select text-center w-auto mx-1 bg-dark text-white border-0"
-                    value={type}
-                    onChange={(e) => setType(e.target.value)}>
-                    <option value="">Semua Tipe</option>
-                    <option value="Malfunction">Malfunction</option>
-                    <option value="Human_Error">Human Error</option>
-                    <option value="Other">Other</option>
-                </select>
+                    <select className="form-select text-center w-auto mx-1 bg-dark text-white border-0" value={category} onChange={(e) => setCategory(e.target.value)}>
+                        <option value="">Semua Kategori</option>
+                        {categories.map(cat => (
+                            <option key={cat.id} value={cat.id}>{cat.name}</option>
+                        ))}
+                    </select>
+                    <select className="form-select text-center w-auto mx-1 bg-dark text-white border-0"
+                        value={type}
+                        onChange={(e) => setType(e.target.value)}>
+                        <option value="">Semua Tipe</option>
+                        <option value="Malfunction">Malfunction</option>
+                        <option value="Human_Error">Human Error</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
             </div>
-
             <div className="border p-2">
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer width="100%" height={250}>
                     <LineChart data={data} margin={{ left: 0, right: 10, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="month" angle={-45} textAnchor="end" interval={0} />

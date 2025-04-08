@@ -129,7 +129,7 @@ export default function Sidebar() {
                     </a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="/admin/tickets">
+                    <a className="nav-link" href="">
                         <span className="menu-icon">
                         <i className="mdi mdi-file-chart" />
                         </span>
