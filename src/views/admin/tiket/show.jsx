@@ -271,7 +271,7 @@ export default function DetailTicket() {
                             <div className="col-6 grid-margin">
                                 <div className="card">
                                     <div className="card-body">
-                                        <h3 className="card-title">Nomer Tiket : <mark className={`font-weight-bold ${ticket.priority  === "Critical" ? "bg-danger" : ticket.priority === "High" ? "bg-warning" : ticket.priority === "Medium" ? "bg-success" : "bg-primary"}`}>{ticket.ticketNumber || "Loading..."}</mark></h3>
+                                        <h3 className="card-title">Nomor Tiket : <mark className={`font-weight-bold ${ticket.priority  === "Critical" ? "bg-danger" : ticket.priority === "High" ? "bg-warning" : ticket.priority === "Medium" ? "bg-success" : "bg-primary"}`}>#{ticket.ticketNumber || "Loading..."}</mark></h3>
                                         <small className="text-muted">Issued : {ticket.user?.name} - {formatLocalTime(ticket.createdAt)}</small><br />
                                         <small className="text-muted"></small>
                                     </div>

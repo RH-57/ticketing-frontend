@@ -91,18 +91,15 @@ export default function SubCategoryChart() {
                     </select>
                 </div>
             </div>
-
-            <div className="border p-3 overflow-x-auto">
                 <ResponsiveContainer width="100%" height={250}>
                     <BarChart data={subCategories}>
                         <CartesianGrid strokeDasharray="2 2" />
-                        <XAxis dataKey="name" />
+                        <XAxis dataKey="name"/>
                         <YAxis />
                         <Tooltip />
-                        <Bar dataKey="ticket" fill="#8884d8" />
+                        <Bar dataKey="ticket" fill="#3751fa" />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
-        </div>
     )
 }

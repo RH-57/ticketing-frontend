@@ -31,7 +31,7 @@ export default function DetailTrend() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-3 col-sm-4 grid-margin stretch-card px-0">
+                            <div className="col-md-3 col-sm-4 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
                                         <CategoryPieChart />

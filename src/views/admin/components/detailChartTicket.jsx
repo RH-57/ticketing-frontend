@@ -93,7 +93,6 @@ export default function DetailTrendTicket() {
                     </select>
                 </div>
             </div>
-            <div className="border p-2">
                 <ResponsiveContainer width="100%" height={250}>
                     <LineChart data={data} margin={{ left: 0, right: 10, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" />
@@ -105,6 +104,5 @@ export default function DetailTrendTicket() {
                     </LineChart>
                 </ResponsiveContainer>
             </div>
-        </div>
     )
 }
