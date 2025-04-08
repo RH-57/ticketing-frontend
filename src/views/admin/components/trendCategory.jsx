@@ -45,7 +45,7 @@ export default function CategoryPieChart() {
                 </select>
             </div>
 
-            <div className="border p-3">
+            <div className="border p-2">
                 <ResponsiveContainer width="100%" height={300}>
                     <PieChart>
                         <Pie

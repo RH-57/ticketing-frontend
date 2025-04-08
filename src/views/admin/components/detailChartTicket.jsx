@@ -68,7 +68,8 @@ export default function DetailTrendTicket() {
 
     return (
         <div className="container">
-            <div className="d-flex justify-content-right gap-3 my-2">
+            <div className="d-flex justify-content-between gap-3 my-2">
+                <h4>Trend</h4>
                 <select className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0" value={year} onChange={(e) => setYear(parseInt(e.target.value, 10))}>
                     {[2023, 2024, 2025].map(y => (
                         <option key={y} value={y}>{y}</option>
@@ -91,11 +92,11 @@ export default function DetailTrendTicket() {
                 </select>
             </div>
 
-            <div className="border p-3">
+            <div className="border p-2">
                 <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={data}>
+                    <LineChart data={data} margin={{ left: 0, right: 10, bottom: 5 }}>
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="month" />
+                        <XAxis dataKey="month" angle={-45} textAnchor="end" interval={0} />
                         <YAxis />
                         <Tooltip />
                         <Legend />

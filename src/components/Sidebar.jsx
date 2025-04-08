@@ -128,6 +128,14 @@ export default function Sidebar() {
                         <span className="menu-title">Tickets</span>
                     </a>
                 </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/admin/tickets">
+                        <span className="menu-icon">
+                        <i className="mdi mdi-file-chart" />
+                        </span>
+                        <span className="menu-title">Reports <i>(Soon)</i></span>
+                    </a>
+                </li>
                 <li className="nav-item menu-items mt-auto">
                     <button className="nav-link text-danger" onClick={handleLogout} style={{ border: 'none', background: 'none', width: '100%', textAlign: 'left' }}>
                         <span className="menu-icon">

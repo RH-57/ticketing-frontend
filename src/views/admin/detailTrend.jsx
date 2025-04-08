@@ -13,36 +13,29 @@ export default function DetailTrend() {
             <div className="container-fluid page-body-wrapper">
                 <Navbar />
                 <div className="main-panel">
-                    <div className="content-wrapper">
+                    <div className="content-wrapper px-3 py-3">
                         <div className="page-header">
-                                <h3 className="page-title">Detail Trend</h3>
-                                <nav aria-label="breadcrumb">
-                                    <ol className="breadcrumb">
-                                        <li className="breadcrumb-item"><Link to="/admin/dashboard">Dasboard</Link></li>
-                                        <li className="breadcrumb-item active" aria-current="page">Detail Chart</li>
-                                    </ol>
-                                </nav>
-                            </div>
+                            <h3 className="page-title">Detail Trend</h3>
+                            <nav aria-label="breadcrumb">
+                                <ol className="breadcrumb">
+                                    <li className="breadcrumb-item"><Link to="/admin/dashboard">Dasboard</Link></li>
+                                    <li className="breadcrumb-item active" aria-current="page">Detail Chart</li>
+                                </ol>
+                            </nav>
+                        </div>
                         <div className="row">
-                            <div className="col-8 grid-margin stretch-card px-1">
+                            <div className="col-md-6 col-sm-4 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
-                                        <div className="d-flex flex-row justify-content-between">
-                                            <h4 className="card-title mb-1">Trend</h4>
-                                        </div>
-                                        <div className="row d-flex justify-content-center ">
-                                            <div className="col-12">
                                                 <DetailTrendTicket />
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-4 grid-margin stretch-card px-1">
+                            <div className="col-md-4 col-sm-4 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
                                         <div className="d-flex flex-row justify-content-between">
-                                            <h4 className="card-title mb-1">Kategori dengan tiket terbanyak</h4>
+                                            <h4 className="card-title mb-1">Kategori</h4>
                                         </div>
                                         <div className="row d-flex justify-content-center ">
                                             <div className="col-12">
