@@ -49,7 +49,7 @@ export default function CreateTicket() {
                 const response = await api.get('/api/admin/branches')
                 setBranches(response.data.data)
             } catch (error) {
-                console.error("There was an error fetching the bracnhes!", error)
+                console.error("There was an error fetching the branches!", error)
             }
         } else {
             console.error("Token is not available")

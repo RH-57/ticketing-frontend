@@ -4,13 +4,16 @@ import api from '../../../services/api'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts'
 
 export default function SubCategoryChart() {
-    const [year, setYear] = useState(new Date().getFullYear())
+    const currentYear = new Date().getFullYear()
+    const startYear = 2023
+    const years = Array.from({ length: currentYear - startYear + 1 }, (_, i) => startYear + i)
+
+    const [year, setYear] = useState(currentYear)
     const [categoryList, setCategoryList] = useState([])
     const [selectedCategory, setSelectedCategory] = useState('')
     const [subCategories, setSubCategories] = useState([])
     const token = Cookies.get('token')
 
-    // Ambil daftar kategori
     const fetchCategories = async () => {
         if (token) {
             api.defaults.headers.common['Authorization'] = token
@@ -21,10 +24,9 @@ export default function SubCategoryChart() {
                         id: cat.id,
                         name: cat.name
                     }))
-    
+
                     setCategoryList(formattedCategories)
-    
-                    // Cari kategori "Hardware"
+
                     const defaultCategory = formattedCategories.find(cat => cat.name.toLowerCase() === "hardware")
                     if (defaultCategory) {
                         setSelectedCategory(defaultCategory.id)
@@ -36,7 +38,6 @@ export default function SubCategoryChart() {
         }
     }
 
-    // Ambil data sub kategori berdasarkan tahun dan kategori
     const fetchDataSubCategories = async (selectedYear, selectedCategoryId) => {
         if (token) {
             api.defaults.headers.common['Authorization'] = token
@@ -55,14 +56,14 @@ export default function SubCategoryChart() {
         }
     }
 
-    // Load kategori saat pertama kali render
     useEffect(() => {
         fetchCategories()
     }, [])
 
-    // Update chart saat tahun atau kategori berubah
     useEffect(() => {
-        fetchDataSubCategories(year, selectedCategory)
+        if (selectedCategory) {
+            fetchDataSubCategories(year, selectedCategory)
+        }
     }, [year, selectedCategory])
 
     return (
@@ -75,7 +76,7 @@ export default function SubCategoryChart() {
                         value={year}
                         onChange={(e) => setYear(parseInt(e.target.value, 10))}
                     >
-                        {[2023, 2024, 2025].map(y => (
+                        {years.map(y => (
                             <option key={y} value={y}>{y}</option>
                         ))}
                     </select>
@@ -91,15 +92,15 @@ export default function SubCategoryChart() {
                     </select>
                 </div>
             </div>
-                <ResponsiveContainer width="100%" height={250}>
-                    <BarChart data={subCategories}>
-                        <CartesianGrid strokeDasharray="2 2" />
-                        <XAxis dataKey="name"/>
-                        <YAxis />
-                        <Tooltip />
-                        <Bar dataKey="ticket" fill="#3751fa" />
-                    </BarChart>
-                </ResponsiveContainer>
-            </div>
+            <ResponsiveContainer width="100%" height={250}>
+                <BarChart data={subCategories}>
+                    <CartesianGrid strokeDasharray="2 2" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar dataKey="ticket" fill="#3751fa" />
+                </BarChart>
+            </ResponsiveContainer>
+        </div>
     )
 }

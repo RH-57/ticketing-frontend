@@ -11,7 +11,7 @@ export default function MostFreqTroubleComponents() {
             api.defaults.headers.common['Authorization'] = token
             try {
                 const response = await api.get('/api/admin/dashboards/most-frequently-trouble-components')
-                setTroubleComponents(response.data.data)
+                setTroubleComponents(response.data.data.slice(0, 5))
             } catch (error) {
                 console.error('Cannot fetch the Data', error)
             }
@@ -29,7 +29,7 @@ export default function MostFreqTroubleComponents() {
                     <tr>
                         <th>No.</th>
                         <th>Nama Komponen</th>
-                        <th>Total Permasalahan</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>

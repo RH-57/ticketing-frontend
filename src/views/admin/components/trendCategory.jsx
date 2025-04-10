@@ -1,33 +1,36 @@
-import { useEffect, useState } from "react";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
-import Cookies from "js-cookie";
-import api from "../../../services/api";
+import { useEffect, useState } from "react"
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts"
+import Cookies from "js-cookie"
+import api from "../../../services/api"
 
-const COLORS = ["#3440eb", "#34eb59", "#FFBB28"];
+const COLORS = ["#3440eb", "#34eb59", "#FFBB28"]
 
 export default function CategoryPieChart() {
-    const [year, setYear] = useState(new Date().getFullYear());
-    const [data, setData] = useState([]);
+    const currentYear = new Date().getFullYear()
+    const startYear = 2023
+    const years = Array.from({ length: currentYear - startYear + 1 }, (_, i) => startYear + i)
 
-    const token = Cookies.get("token");
+    const [year, setYear] = useState(currentYear)
+    const [data, setData] = useState([])
 
-    // Fetch data dari API berdasarkan tahun yang dipilih
+    const token = Cookies.get("token")
+
     const fetchData = async (selectedYear) => {
         try {
-            api.defaults.headers.common["Authorization"] = token;
-            const response = await api.get(`/api/admin/tickets/trend-categories/${selectedYear}`);
+            api.defaults.headers.common["Authorization"] = token
+            const response = await api.get(`/api/admin/tickets/trend-categories/${selectedYear}`)
 
             if (response.data.success) {
-                setData(response.data.data);
+                setData(response.data.data)
             }
         } catch (error) {
-            console.error("Error fetching category ticket data:", error);
+            console.error("Error fetching category ticket data:", error)
         }
-    };
+    }
 
     useEffect(() => {
-        fetchData(year);
-    }, [year]);
+        fetchData(year)
+    }, [year])
 
     return (
         <div className="container">
@@ -38,7 +41,7 @@ export default function CategoryPieChart() {
                     value={year}
                     onChange={(e) => setYear(parseInt(e.target.value, 10))}
                 >
-                    {[2023, 2024, 2025].map((y) => (
+                    {years.map((y) => (
                         <option key={y} value={y}>
                             {y}
                         </option>
@@ -68,5 +71,5 @@ export default function CategoryPieChart() {
                 </ResponsiveContainer>
             </div>
         </div>
-    );
+    )
 }
