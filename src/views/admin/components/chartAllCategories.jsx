@@ -9,13 +9,30 @@ export default function SubSubCategoryChart() {
   const currentYear = new Date().getFullYear()
   const startYear = 2023
   const years = Array.from({ length: currentYear - startYear + 1 }, (_, i) => startYear + i)
+  const months = [
+    { value: '', name: 'Semua Bulan' },
+    { value: '1', name: 'Januari' },
+    { value: '2', name: 'Februari' },
+    { value: '3', name: 'Maret' },
+    { value: '4', name: 'April' },
+    { value: '5', name: 'Mei' },
+    { value: '6', name: 'Juni' },
+    { value: '7', name: 'Juli' },
+    { value: '8', name: 'Agustus' },
+    { value: '9', name: 'September' },
+    { value: '10', name: 'Oktober' },
+    { value: '11', name: 'November' },
+    { value: '12', name: 'Desember' },
+  ]
 
   const [year, setYear] = useState(currentYear)
+  const [month, setMonth] = useState('')
   const [categoryList, setCategoryList] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')
   const [subCategoryList, setSubCategoryList] = useState([])
   const [selectedSubCategory, setSelectedSubCategory] = useState('')
   const [chartData, setChartData] = useState([])
+
   const token = Cookies.get('token')
 
   const fetchCategories = async () => {
@@ -24,16 +41,8 @@ export default function SubSubCategoryChart() {
       try {
         const res = await api.get('/api/admin/categories')
         if (res.data.status) {
-          const categories = res.data.data.map(cat => ({
-            id: cat.id,
-            name: cat.name
-          }))
+          const categories = res.data.data.map(cat => ({ id: cat.id, name: cat.name }))
           setCategoryList(categories)
-
-          const defaultCat = categories.find(cat => cat.name.toLowerCase() === 'hardware')
-          if (defaultCat) {
-            setSelectedCategory(defaultCat.id)
-          }
         }
       } catch (err) {
         console.error('Error fetching categories', err)
@@ -46,10 +55,7 @@ export default function SubSubCategoryChart() {
       try {
         const res = await api.get(`/api/admin/categories/${categoryId}/sub-categories`)
         if (res.data.status) {
-          const subs = res.data.data.map(sub => ({
-            id: sub.id,
-            name: sub.name
-          }))
+          const subs = res.data.data.map(sub => ({ id: sub.id, name: sub.name }))
           setSubCategoryList(subs)
         }
       } catch (err) {
@@ -58,29 +64,35 @@ export default function SubSubCategoryChart() {
     }
   }
 
-  const fetchChartByCategory = async (selectedYear, categoryId) => {
-    if (token && categoryId) {
-      try {
-        const res = await api.get(`/api/admin/tickets/trend-sub-categories/${selectedYear}?category_id=${categoryId}`)
-        if (res.data.success) {
-          setChartData(res.data.data)
-        }
-      } catch (err) {
-        console.error('Error fetching category chart', err)
-      }
+  const fetchChartData = async () => {
+    if (!token) return
+  
+    let url = ''
+    const params = new URLSearchParams()
+  
+    if (month) params.append('month', month)
+    if (selectedCategory) params.append('category_id', selectedCategory)
+    if (selectedSubCategory) params.append('subCategory_Id', selectedSubCategory)
+  
+    if (selectedSubCategory) {
+      url = `/api/admin/tickets/trend-sub-sub-categories/${year}`
+    } else {
+      url = `/api/admin/tickets/trend-sub-categories/${year}`
     }
-  }
-
-  const fetchChartBySubCategory = async (selectedYear, subCategoryId) => {
-    if (token && subCategoryId) {
-      try {
-        const res = await api.get(`/api/admin/tickets/trend-sub-sub-categories/${selectedYear}?subCategory_Id=${subCategoryId}`)
-        if (res.data.success) {
-          setChartData(res.data.data)
-        }
-      } catch (err) {
-        console.error('Error fetching subcategory chart', err)
+  
+    if (params.toString()) {
+      url += `?${params.toString()}`
+    }
+  
+    try {
+      const res = await api.get(url, {
+        headers: { Authorization: token }
+      })
+      if (res.data.success) {
+        setChartData(res.data.data)
       }
+    } catch (err) {
+      console.error('Error fetching chart data', err)
     }
   }
 
@@ -91,26 +103,21 @@ export default function SubSubCategoryChart() {
   useEffect(() => {
     if (selectedCategory) {
       fetchSubCategories(selectedCategory)
-      setSelectedSubCategory('') // Reset subcategory
-      fetchChartByCategory(year, selectedCategory)
+      setSelectedSubCategory('')
     }
   }, [selectedCategory])
 
   useEffect(() => {
-    if (selectedSubCategory) {
-      fetchChartBySubCategory(year, selectedSubCategory)
-    } else if (selectedCategory) {
-      fetchChartByCategory(year, selectedCategory)
-    }
-  }, [year, selectedSubCategory])
+    fetchChartData()
+  }, [year, month, selectedCategory, selectedSubCategory])
 
   return (
     <div>
       <div className="d-flex justify-content-between gap-2 my-2">
         <h4>Total Tiket</h4>
-        <div className="d-flex">
+        <div className="d-flex flex-wrap gap-2">
           <select
-            className="form-select text-center w-auto mx-1 bg-dark text-white border-0"
+            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
             value={year}
             onChange={(e) => setYear(parseInt(e.target.value, 10))}
           >
@@ -120,23 +127,33 @@ export default function SubSubCategoryChart() {
           </select>
 
           <select
-            className="form-select text-center w-auto mx-1 bg-dark text-white border-0"
+            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
+            value={month}
+            onChange={(e) => setMonth(e.target.value)}
+          >
+            {months.map(m => (
+              <option key={m.value} value={m.value}>{m.name}</option>
+            ))}
+          </select>
+
+          <select
+            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            <option value="">-- Pilih Kategori --</option>
+            <option value="">Semua Kategori</option>
             {categoryList.map(cat => (
               <option key={cat.id} value={cat.id}>{cat.name}</option>
             ))}
           </select>
 
           <select
-            className="form-select text-center w-auto mx-1 bg-dark text-white border-0"
+            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
             value={selectedSubCategory}
             onChange={(e) => setSelectedSubCategory(e.target.value)}
             disabled={!selectedCategory}
           >
-            <option value="">-- Semua Sub Kategori --</option>
+            <option value="">Semua Sub Kategori</option>
             {subCategoryList.map(sub => (
               <option key={sub.id} value={sub.id}>{sub.name}</option>
             ))}
