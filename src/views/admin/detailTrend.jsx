@@ -4,7 +4,7 @@ import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import DetailTrendTicket from "./components/detailChartTicket";
 import CategoryPieChart from "./components/trendCategory";
-import SubCategoryChart from "./components/chartSubCategories";
+import SubSubCategoryChart from "./components/chartAllCategories";
 
 export default function DetailTrend() {
     return (
@@ -47,10 +47,10 @@ export default function DetailTrend() {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-6 grid-margin stretch-card px-1">
+                            <div className="col-12 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
-                                        <SubCategoryChart />
+                                        <SubSubCategoryChart />
                                     </div>
                                 </div>
                             </div>
