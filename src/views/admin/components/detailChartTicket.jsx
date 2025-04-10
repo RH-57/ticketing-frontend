@@ -65,7 +65,7 @@ export default function DetailTrendTicket() {
     }, [year, category, type])
 
     return (
-        <div className="container">
+        <div>
             <div className="d-flex justify-content-between gap-3">
                 <h4>Trend</h4>
                 <div>
@@ -105,7 +105,7 @@ export default function DetailTrendTicket() {
 
             <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={data} margin={{ left: 0, right: 10, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="3 3" />
+                    <CartesianGrid stroke="#575757" strokeDasharray="" />
                     <XAxis dataKey="month" angle={-45} textAnchor="end" interval={0} />
                     <YAxis />
                     <Tooltip />

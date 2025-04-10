@@ -4,7 +4,6 @@ import {
     Line,
     YAxis,
     XAxis,
-    CartesianGrid,
     Tooltip,
     Legend,
     ResponsiveContainer
@@ -30,7 +29,6 @@ export default function ChartTicket() {
             <>
                 <ResponsiveContainer width="100%" height={250}>
                         <LineChart data={chartTickets}>
-                            <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="year" />
                             <YAxis allowDecimals={false} />
                             <Tooltip />

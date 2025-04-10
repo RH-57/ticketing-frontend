@@ -105,7 +105,7 @@ export default function SubSubCategoryChart() {
   }, [year, selectedSubCategory])
 
   return (
-    <div className="container">
+    <div>
       <div className="d-flex justify-content-between gap-2 my-2">
         <h4>Total Tiket</h4>
         <div className="d-flex">
@@ -146,7 +146,7 @@ export default function SubSubCategoryChart() {
 
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={chartData}>
-          <CartesianGrid strokeDasharray="2 2" />
+          <CartesianGrid strokeDasharray="" stroke="#575757" />
           <XAxis dataKey="name" />
           <YAxis allowDecimals={false} />
           <Tooltip />

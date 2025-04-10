@@ -33,7 +33,7 @@ export default function CategoryPieChart() {
     }, [year])
 
     return (
-        <div className="container">
+        <div>
             <div className="d-flex justify-content-between gap-3">
                 <h4>Kategori</h4>
                 <select

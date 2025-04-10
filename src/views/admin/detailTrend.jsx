@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar";
 import DetailTrendTicket from "./components/detailChartTicket";
 import CategoryPieChart from "./components/trendCategory";
 import SubSubCategoryChart from "./components/chartAllCategories";
+import ChartMostProductiveUser from "./components/chartMostProductiveUser";
 
 export default function DetailTrend() {
     return (
@@ -41,7 +42,7 @@ export default function DetailTrend() {
                             <div className="col-md-3 col-sm-4 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
-                                        
+                                        <ChartMostProductiveUser />
                                     </div>
                                 </div>
                             </div>
