@@ -6,6 +6,7 @@ import DetailTrendTicket from "./components/detailChartTicket";
 import CategoryPieChart from "./components/trendCategory";
 import SubSubCategoryChart from "./components/chartAllCategories";
 import ChartMostProductiveUser from "./components/chartMostProductiveUser";
+import SubCategoryComparisonChart from "./components/chartCompareByType";
 
 export default function DetailTrend() {
     return (
@@ -52,6 +53,15 @@ export default function DetailTrend() {
                                 <div className="card">
                                     <div className="card-body">
                                         <SubSubCategoryChart />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-12 grid-margin stretch-card px-1">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <SubCategoryComparisonChart />
                                     </div>
                                 </div>
                             </div>
