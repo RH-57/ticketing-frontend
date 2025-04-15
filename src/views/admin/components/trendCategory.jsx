@@ -34,19 +34,22 @@ export default function CategoryPieChart() {
 
     return (
         <div>
-            <div className="d-flex justify-content-between gap-3">
+            <div className="d-flex justify-content-between gap-3 mb-4">
                 <h4>Kategori</h4>
-                <select
-                    className="form-select text-center w-auto bg-dark text-white border-0"
-                    value={year}
-                    onChange={(e) => setYear(parseInt(e.target.value, 10))}
-                >
-                    {years.map((y) => (
-                        <option key={y} value={y}>
-                            {y}
-                        </option>
-                    ))}
-                </select>
+                <div className="d-flex align-items-center gap-2">
+                    <select
+                        className="form-select text-center w-auto mx-1 border-0"
+                        style={{ backgroundColor: '#212529', color: '#fff' }}
+                        value={year}
+                        onChange={(e) => setYear(parseInt(e.target.value, 10))}
+                    >
+                        {years.map((y) => (
+                            <option key={y} value={y}>
+                                {y}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </div>
 
             <div>

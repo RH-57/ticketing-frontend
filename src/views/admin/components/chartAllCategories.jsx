@@ -114,10 +114,11 @@ export default function SubSubCategoryChart() {
   return (
     <div>
       <div className="d-flex justify-content-between gap-2 my-2">
-        <h4>Total Tiket</h4>
-        <div className="d-flex flex-wrap gap-2">
+        <h4 className="mb-0">Total Tiket</h4>
+        <div className="d-flex align-items-center  gap-2">
           <select
-            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
+            className="form-select text-center w-auto mx-1 border-0"
+            style={{ backgroundColor: '#212529', color: '#fff' }}
             value={year}
             onChange={(e) => setYear(parseInt(e.target.value, 10))}
           >
@@ -127,7 +128,8 @@ export default function SubSubCategoryChart() {
           </select>
 
           <select
-            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
+            className="form-select text-center w-auto mx-1 border-0"
+            style={{ backgroundColor: '#212529', color: '#fff' }}
             value={month}
             onChange={(e) => setMonth(e.target.value)}
           >
@@ -137,7 +139,8 @@ export default function SubSubCategoryChart() {
           </select>
 
           <select
-            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
+            className="form-select text-center w-auto mx-1 border-0"
+            style={{ backgroundColor: '#212529', color: '#fff' }}
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
@@ -148,7 +151,8 @@ export default function SubSubCategoryChart() {
           </select>
 
           <select
-            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
+            className="form-select text-center w-auto mx-1 border-0"
+            style={{ backgroundColor: '#212529', color: '#fff' }}
             value={selectedSubCategory}
             onChange={(e) => setSelectedSubCategory(e.target.value)}
             disabled={!selectedCategory}
@@ -163,7 +167,7 @@ export default function SubSubCategoryChart() {
 
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={chartData}>
-          <CartesianGrid strokeDasharray="" stroke="#575757" />
+          <CartesianGrid strokeDasharray="2 2" stroke="#575757" />
           <XAxis dataKey="name" />
           <YAxis allowDecimals={false} />
           <Tooltip />

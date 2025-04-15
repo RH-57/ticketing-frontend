@@ -68,11 +68,11 @@ export default function Login() {
                                 <form onSubmit={login}>
                                 <div className="form-group">
                                     <label>Username or email *</label>
-                                    <input type="text" className="form-control p_input" value={email} onChange={(e) => setEmail(e.target.value)} />
+                                    <input type="text" className="form-control p_input text-white" value={email} onChange={(e) => setEmail(e.target.value)} />
                                 </div>
                                 <div className="form-group">
                                     <label>Password *</label>
-                                    <input type="password" className="form-control p_input" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                    <input type="password" className="form-control p_input text-white" value={password} onChange={(e) => setPassword(e.target.value)} />
                                 </div>
                                 <div className="text-center">
                                     <button type="submit" className="btn btn-primary btn-block enter-btn">Login</button>

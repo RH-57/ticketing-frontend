@@ -133,17 +133,18 @@ export default function Ticket() {
                                             <input 
                                                 type="text" 
                                                 className="form-control w-50 ml-auto" 
-                                                placeholder="Search Ticket"
+                                                placeholder="Cari Tiket . . ."
                                                 value={searchQuery}
                                                 onChange={(e) => setSearchQuery(e.target.value)}
                                                 
                                              />
                                         </div>
-                                        <div className="table-responsive" style={{maxHeight: '300px', overflow: 'auto'}} >
+                                        <div className="table-responsive" style={{maxHeight: '450px', overflow: 'auto'}} >
                                             <table className="table table-hover text-white">
                                                 <thead>
                                                     <th>No. Tiket</th>
-                                                    <th>Tgl.</th>
+                                                    <th>Proritas</th>
+                                                    <th>Tgl. Terbit</th>
                                                     <th>Judul</th>
                                                     <th>Pelapor</th>
                                                     <th>Status</th>
@@ -155,10 +156,15 @@ export default function Ticket() {
                                                             ? tickets.slice(0,10).map((ticket, index) => (
                                                                 <tr key={index}>
                                                                     <td>
-                                                                        <span className={`badge badge-pill font-weight-bold ${ticket.priority === "Critical" ? "badge-outline-danger" : ticket.priority === "High" ? "badge-outline-warning" : ticket.priority === "Medium" ? "badge-outline-success" : "badge-outline-primary"}`}>
+                                                                        <span className="badge badge-pill font-weight-bold">
                                                                             {ticket.ticketNumber}
                                                                         </span>
-                                                                    </td>
+                                                                    </td>                                                                    
+                                                                    <td>
+                                                                        <span className={`badge badge-pill font-weight-bold ${ticket.priority === "Critical" ? "badge-outline-danger" : ticket.priority === "High" ? "badge-outline-warning" : ticket.priority === "Medium" ? "badge-outline-success" : "badge-outline-primary"}`}>
+                                                                            {ticket.priority}
+                                                                        </span>
+                                                                    </td>                                                                    
                                                                     <td>{formatLocalTime(ticket.createdAt)}</td>
                                                                     <td>{ticket.title}</td>
                                                                     <td>{ticket.employee?.name}</td>

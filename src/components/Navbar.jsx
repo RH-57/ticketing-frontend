@@ -70,7 +70,7 @@ export default function Navbar() {
               className="nav-link btn btn-success create-new-button"
               to="/admin/tickets/create"
             >
-              + Buat Tiket Baru
+              Tiket Baru
             </Link>
           </li>
           <li className="nav-item dropdown">

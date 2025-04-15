@@ -66,11 +66,12 @@ export default function DetailTrendTicket() {
 
     return (
         <div>
-            <div className="d-flex justify-content-between gap-3">
-                <h4>Trend</h4>
-                <div>
+            <div className="d-flex justify-content-between align-items-center mb-4">
+                <h4 className="mb-0">Grafik Trend</h4>
+                <div className="d-flex align-items-center gap-2">
                     <select
-                        className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
+                        className="form-select text-center w-auto mx-1 border-0"
+                        style={{ backgroundColor: '#212529', color: '#fff' }}
                         value={year}
                         onChange={(e) => setYear(parseInt(e.target.value, 10))}
                     >
@@ -78,24 +79,26 @@ export default function DetailTrendTicket() {
                             <option key={y} value={y}>{y}</option>
                         ))}
                     </select>
-
+            
                     <select
-                        className="form-select text-center w-auto mx-1 bg-dark text-white border-0"
+                        className="form-select text-center w-auto mx-1 border-0"
+                        style={{ backgroundColor: '#212529', color: '#fff' }}
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                     >
-                        <option value="">Semua Kategori</option>
+                        <option value="">All Category</option>
                         {categories.map(cat => (
                             <option key={cat.id} value={cat.id}>{cat.name}</option>
                         ))}
                     </select>
-
+                
                     <select
-                        className="form-select text-center w-auto mx-1 bg-dark text-white border-0"
+                        className="form-select text-center w-auto mx-1 border-0"
+                        style={{ backgroundColor: '#212529', color: '#fff' }}
                         value={type}
                         onChange={(e) => setType(e.target.value)}
                     >
-                        <option value="">Semua Tipe</option>
+                        <option value="">All Type</option>
                         <option value="Malfunction">Malfunction</option>
                         <option value="Human_Error">Human Error</option>
                         <option value="Other">Other</option>
@@ -105,7 +108,7 @@ export default function DetailTrendTicket() {
 
             <ResponsiveContainer width="100%" height={250}>
                 <LineChart data={data} margin={{ left: 0, right: 10, bottom: 5 }}>
-                    <CartesianGrid stroke="#575757" strokeDasharray="" />
+                    <CartesianGrid stroke="#575757" strokeDasharray="2 2" />
                     <XAxis dataKey="month" angle={-45} textAnchor="end" interval={0} />
                     <YAxis />
                     <Tooltip />

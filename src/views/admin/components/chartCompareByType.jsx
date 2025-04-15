@@ -51,9 +51,10 @@ export default function SubCategoryComparisonChart() {
     <div>
       <div className="d-flex justify-content-between gap-2 my-2">
         <h4>Perbandingan Berdasarkan Tipe Error</h4>
-        <div className="d-flex gap-2">
+        <div className="d-flex align-items-center gap-2">
           <select
-            className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
+            className="form-select text-center w-auto mx-1 border-0"
+            style={{ backgroundColor: '#212529', color: '#fff' }}
             value={year}
             onChange={(e) => setYear(parseInt(e.target.value))}
           >
@@ -61,7 +62,8 @@ export default function SubCategoryComparisonChart() {
           </select>
 
           <select
-            className="form-select form-select-sm text-center w-auto bg-dark text-white border-0"
+            className="form-select text-center w-auto mx-1 border-0"
+            style={{ backgroundColor: '#212529', color: '#fff' }}
             value={month}
             onChange={(e) => setMonth(e.target.value)}
           >
@@ -73,7 +75,7 @@ export default function SubCategoryComparisonChart() {
         <div style={{ minWidth: `${chartData.length * 100}px` }}>
             <ResponsiveContainer width="100%" height={350}>
                 <BarChart data={chartData} margin={{ top: 10, right: 30, left: 0, bottom: 5 }}>
-                    <CartesianGrid strokeDasharray="" />
+                    <CartesianGrid strokeDasharray="2 2" stroke="#575757" />
                     <XAxis dataKey="subcategory" />
                     <YAxis allowDecimals={false} />
                     <Tooltip />

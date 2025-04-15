@@ -43,15 +43,18 @@ export default function ChartMostProductiveUser() {
     <div style={{ width: '100%', height: '250px' }}>
       <div className="d-flex justify-content-between align-items-center mb-2">
         <h4 className="mb-0">Selesaikan Tiket</h4>
-        <select
-          className="form-select form-select-sm text-center w-auto mx-1 bg-dark text-white border-0"
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
-        >
-          {years.map((y) => (
-            <option key={y} value={y}>{y}</option>
-          ))}
-        </select>
+        <div className="d-flex align-items-center gap-2">
+          <select
+            className="form-select text-center w-auto mx-1 border-0"
+            style={{ backgroundColor: '#212529', color: '#fff' }}
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
+          >
+            {years.map((y) => (
+              <option key={y} value={y}>{y}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       <ResponsiveContainer width="100%" height="100%">
