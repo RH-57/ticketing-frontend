@@ -10,7 +10,7 @@ export default function SubCategoryComparisonChart() {
   const years = Array.from({ length: currentYear - 2023 + 1 }, (_, i) => 2023 + i)
 
   const months = [
-    { value: '', name: 'Semua Bulan' },
+    { value: '', name: 'All Month' },
     { value: '1', name: 'Januari' }, { value: '2', name: 'Februari' },
     { value: '3', name: 'Maret' }, { value: '4', name: 'April' },
     { value: '5', name: 'Mei' }, { value: '6', name: 'Juni' },

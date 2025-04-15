@@ -10,7 +10,7 @@ export default function SubSubCategoryChart() {
   const startYear = 2023
   const years = Array.from({ length: currentYear - startYear + 1 }, (_, i) => startYear + i)
   const months = [
-    { value: '', name: 'Semua Bulan' },
+    { value: '', name: 'All Month' },
     { value: '1', name: 'Januari' },
     { value: '2', name: 'Februari' },
     { value: '3', name: 'Maret' },
@@ -144,7 +144,7 @@ export default function SubSubCategoryChart() {
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            <option value="">Semua Kategori</option>
+            <option value="">All Category</option>
             {categoryList.map(cat => (
               <option key={cat.id} value={cat.id}>{cat.name}</option>
             ))}
@@ -157,7 +157,7 @@ export default function SubSubCategoryChart() {
             onChange={(e) => setSelectedSubCategory(e.target.value)}
             disabled={!selectedCategory}
           >
-            <option value="">Semua Sub Kategori</option>
+            <option value="">All Sub-Category</option>
             {subCategoryList.map(sub => (
               <option key={sub.id} value={sub.id}>{sub.name}</option>
             ))}
