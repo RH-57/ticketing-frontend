@@ -20,6 +20,8 @@ import DetailTrend from '../views/admin/detailTrend'
 import Division from '../views/admin/divisions'
 import NotFound from '../views/admin/notFound'
 import ChangePassword from '../views/admin/components/changePassword'
+
+
 export default function AppRoutes() {
     const {isAuthenticated} = useContext(AuthContext)
 

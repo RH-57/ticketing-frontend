@@ -19,7 +19,7 @@ export default function User() {
     const [message, setMessage] = useState("")
     const token = Cookies.get('token')
 
-    const roles = ["superadmin", "admin", "technician"];
+    const roles = ["superadmin", "admin", "technician", "viewer"];
 
     const getCsrfToken = async () => {
         try {
@@ -255,7 +255,7 @@ export default function User() {
                                                                     <td>{user.name}</td>
                                                                     <td>{user.email}</td>
                                                                     <td>
-                                                                        <span className={`badge ${user.role === "superadmin" ? "badge-outline-danger" : user.role === "admin" ? "badge-outline-primary" : "badge-outline-warning"}`}>
+                                                                        <span className={`badge ${user.role === "superadmin" ? "badge-outline-danger" : user.role === "admin" ? "badge-outline-primary" : user.role === "viewer" ? "badge-outline-success" : "badge-outline-warning"}`}>
                                                                             {user.role}
                                                                         </span>
                                                                     </td>

@@ -171,44 +171,43 @@ export default function Division() {
                             </nav>                            
                         </div>
                         <div className="row">
-                            <div className="col-lg-6 grid-margin stretch-card">
+                            <div className="col-lg-8 grid-margin stretch-card mb-4">
                                 <div className="card">
                                     <div className="card-body">
-                                        <h4 className="card-title">{id ? "Edit Divisi" : "Tambah Divisi"}</h4>
+                                        <h4 className="card-title">{id ? "Edit Division" : "Add Division"}</h4>
                                         {message && (
                                             <div className={`alert ${message.includes("success") ? "alert-success" : "alert-danger"} mt-2`}>
                                                 {message}
                                             </div>
                                         )}
                                         <form onSubmit={handleSubmit} className="form-sample">
-                                            <div className="form-group">
-                                                <label>Nama Cabang</label>
-                                                <select className="form-control" value={branchId} onChange={(e) => setBranchId(e.target.value)}>
-                                                    <option value="">Pilih Cabang</option>
-                                                    {
-                                                        branches.map(branch => (
-                                                            <option key={branch.id} value={branch.id}>{branch.code}</option>
-                                                        ))
-                                                    }
-                                                </select>
+                                            <div className="form-group row">
+                                                <label className="col-md-2 col-form-label">Branch</label>
+                                                <div className="col-md-8">                    
+                                                    <select className="form-control text-white" value={branchId} onChange={(e) => setBranchId(e.target.value)}>
+                                                        <option value="">Pilih Cabang</option>
+                                                        {
+                                                            branches.map(branch => (
+                                                                <option key={branch.id} value={branch.id}>{branch.code}</option>
+                                                            ))
+                                                        }
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div className="form-group">
-                                                <label>Nama Divisi</label>
-                                                <input className="form-control" placeholder="Nama Divisi" required value={name} onChange={(e) => setName(e.target.value)}></input>
+                                            <div className="form-group row">
+                                                <label className="col-md-2 col-form-label">Division</label>
+                                                <div className="col-md-8">
+                                                    <input className="form-control text-white" placeholder="Nama Divisi" required value={name} onChange={(e) => setName(e.target.value)}></input>
+                                                </div>                                                
                                             </div>
-                                            <button type="submit" className="btn btn-primary mr-2">{id ? "Edit" : "Simpan"}</button>
+                                            <button type="submit" className="btn btn-primary mr-2">{id ? "Edit" : "Save"}</button>
                                             <button type="button" className="btn btn-dark" onClick={() => {
                                                 setId(null)
                                                 setName('')
                                                 setBranchId('')
                                             }}>Cancel</button>
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 grid-margin stretch-card">
-                                <div className="card">
-                                    <div className="card-body">
+                                        <hr/>
                                         <div className="d-flex justify-content-between align-items-center mb-3">
                                             <h4 className="card-title mb-0">List Divisi</h4>
                                             <input
@@ -220,7 +219,7 @@ export default function Division() {
                                             />
                                         </div>
                                         <div className="table-responsive" style={{maxHeight: '220px', overflow: 'auto'}}>
-                                            <table className="table table-hover">
+                                            <table className="table table-hover text-white">
                                                 <thead>
                                                     <tr>
                                                         <th>Nama</th>

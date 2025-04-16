@@ -198,54 +198,54 @@ export default function Department() {
                             </nav>
                         </div>
                         <div className="row">
-                            <div className="col-md-6 grid-margin stretch-card">
+                            <div className="col-md-8 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
-                                        <h4 className="card-title">{id ? "Edit Departemen" : "Tambah Departemen"}</h4>
+                                        <h4 className="card-title">{id ? "Edit Departement" : "Add Department"}</h4>
                                         {message && (
                                             <div className={`alert ${message.includes("success") ? "alert-success" : "alert-danger"} mt-2`}>
                                                 {message}
                                             </div>
                                         )}
-                                        <form onSubmit={handleSubmit} className="form-sample">
-                                            <div className="row">
-                                                <div className="col">
-                                                    <div className="form-group">
-                                                        <label>Cabang</label>
-                                                        <select className="form-control" value={branchId} onChange={handleBranchChange}>
-                                                            <option value="">Pilih Cabang</option>
-                                                            {
-                                                                branches.map(branch => (
-                                                                    <option key={branch.id} value={branch.id}>{branch.name}</option>
-                                                                ))
-                                                            }
-                                                        </select>
-                                                    </div>
+                                        <form onSubmit={handleSubmit} className="form-sample">                                            
+                                            <div className="form-group row">
+                                                <label className="col-md-3 col-form-label">Branch</label>
+                                                <div className="col-md-8">
+                                                    <select className="form-control" value={branchId} onChange={handleBranchChange}>
+                                                        <option value="">Pilih Cabang</option>
+                                                        {
+                                                            branches.map(branch => (
+                                                                <option key={branch.id} value={branch.id}>{branch.name}</option>
+                                                            ))
+                                                        }
+                                                    </select>
                                                 </div>
-                                                <div className="col">
-                                                    <div className="form-group">
-                                                        <label>Divisi</label>
-                                                        <select className="form-control" 
-                                                            value={divisionId} 
-                                                            onChange={(e) => {
-                                                                setDivisionId(e.target.value);
-                                                                setFormData({ ...formData, divisionId: e.target.value });
-                                                            }}>
-                                                            <option value="">Pilih Divisi</option>
-                                                            {
-                                                                divisions.map(division => (
-                                                                    <option key={division.id} value={division.id}>{division.name}</option>
-                                                                ))
-                                                            }
-                                                        </select>
-                                                    </div>
+                                            </div>                                                                                
+                                            <div className="form-group row">
+                                                <label className="col-md-3 col-form-label">Division</label>
+                                                <div className="col-md-8">
+                                                    <select className="form-control" 
+                                                        value={divisionId} 
+                                                        onChange={(e) => {
+                                                            setDivisionId(e.target.value);
+                                                            setFormData({ ...formData, divisionId: e.target.value });
+                                                        }}>
+                                                        <option value="">Pilih Divisi</option>
+                                                        {
+                                                            divisions.map(division => (
+                                                                <option key={division.id} value={division.id}>{division.name}</option>
+                                                            ))
+                                                        }
+                                                    </select>
                                                 </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Departemen</label>
-                                                <input className="form-control" placeholder="Nama Departemen" required value={name} onChange={(e) => setName(e.target.value)}></input>
+                                            </div>                                            
+                                            <div className="form-group row">
+                                                <label className="col-md-3 col-form-label">Department</label>
+                                                <div className="col-md-8">
+                                                    <input className="form-control" placeholder="Nama Departemen" required value={name} onChange={(e) => setName(e.target.value)}></input>
+                                                </div>                        
                                             </div>        
-                                            <button type="submit" className="btn btn-primary mr-2">{id ? "Edit" : "Simpan"}</button>
+                                            <button type="submit" className="btn btn-primary mr-2">{id ? "Edit" : "Save"}</button>
                                             <button type="button" className="btn btn-dark" onClick={() => {
                                                 setId(null)
                                                 setName('')
@@ -253,12 +253,7 @@ export default function Department() {
                                                 setDivisionId('')
                                             }}>Cancel</button>
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 grid-margin stretch-card">
-                                <div className="card">
-                                    <div className="card-body">
+                                        <hr/>
                                         <div className="d-flex justify-content-between align-items-center mb-3">
                                             <h4 className="card-title mb-0">List Departemen</h4>
                                             <input
@@ -306,7 +301,7 @@ export default function Department() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>        
                         </div>
                     </div>
                     <footer className="footer fixed">

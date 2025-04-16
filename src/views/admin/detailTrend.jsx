@@ -49,19 +49,33 @@ export default function DetailTrend() {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-12 grid-margin stretch-card px-1">
+                            <div className="col-8 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
                                         <SubSubCategoryChart />
                                     </div>
                                 </div>
                             </div>
+                            <div className="col-4 grid-margin stretch-card px-1">
+                                <div className="card">
+                                    <div className="card-body">
+                                        
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div className="row">
-                            <div className="col-12 grid-margin stretch-card px-1">
+                            <div className="col-8 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
                                         <SubCategoryComparisonChart />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-4 grid-margin stretch-card px-1">
+                                <div className="card">
+                                    <div className="card-body">
+                                        
                                     </div>
                                 </div>
                             </div>

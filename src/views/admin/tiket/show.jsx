@@ -257,182 +257,166 @@ export default function DetailTicket() {
                 <Navbar />
                 <div className="main-panel">
                     <div className="content-wrapper">
+                        {/* Header & Breadcrumb */}
                         <div className="page-header">
                             <h3 className="page-title">Detail Ticket</h3>
                             <nav className="breadcrumb">
                                 <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><Link to="/admin/dashboard">Dashboard</Link></li>
-                                    <li className="breadcrumb-item"><Link to="/admin/tickets">Tickets</Link></li>
-                                    <li className="breadcrumb-item active" aria-current="page">Detail Ticket</li>
+                                <li className="breadcrumb-item"><Link to="/admin/dashboard">Dashboard</Link></li>
+                                <li className="breadcrumb-item"><Link to="/admin/tickets">Tickets</Link></li>
+                                <li className="breadcrumb-item active">Detail Ticket</li>
                                 </ol>
                             </nav>
                         </div>
-                        <div className="row">
-                            <div className="col-6 grid-margin">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <h3 className="card-title">Nomor Tiket : <mark className={`font-weight-bold ${ticket.priority  === "Critical" ? "bg-danger" : ticket.priority === "High" ? "bg-warning" : ticket.priority === "Medium" ? "bg-success" : "bg-primary"}`}>#{ticket.ticketNumber || "Loading..."}</mark></h3>
-                                        <small className="text-muted">Issued : {ticket.user?.name} - {formatLocalTime(ticket.createdAt)}</small><br />
-                                        <small className="text-muted"></small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                        {/* Ticket Info */}
                         <div className="row">
                             <div className="col-12">
                                 <div className="card">
                                     <div className="card-body">
-                                        <div className="d-flex justify-content-between">
-                                            <h2>{ticket.title}</h2>
+                                        {/* Header Ticket */}
+                                        <div className="d-flex justify-content-between align-items-center mb-3">
+                                            <div>
+                                                <h3 className="card-title">
+                                                Nomor Tiket:{" "}
+                                                <mark className={`font-weight-bold ${ticket.priority === "Critical" ? "bg-danger" : ticket.priority === "High" ? "bg-warning" : ticket.priority === "Medium" ? "bg-success" : "bg-primary"}`}>
+                                                    #{ticket.ticketNumber || "Loading..."}
+                                                </mark>
+                                                </h3>
+                                                <small className="text-muted">
+                                                Issued: {ticket.user?.name} - {formatLocalTime(ticket.createdAt)}
+                                                </small>
+                                            </div>
                                             {getButton()}
                                         </div>
-                                        <small className="text-muted">{ticket.employee?.name} - {ticket.department?.name} - {ticket.division?.name} - {ticket.branch?.code}</small>
-                                        <hr/>
-                                        <div className="row">
-                                            <div className="col">
-                                                <p>{ticket.description}</p>
-                                            </div>
-                                            <div className="col">
-                                                    <h2 className="mb-3">Pemecahan Masalah</h2>
-                                                    <hr />
-                                                    {comment.length > 0 ? (
-                                                        <div className="list-group">
-                                                            {comment.map((cmt, index) => (
-                                                                <div key={index} className="mb-3 p-3 border rounded">
-                                                                    <p className="mb-1 text-muted">Solusi:</p> 
-                                                                    <p className="fw-bold">{cmt.description}</p>
-                                                                    <p className="mb-1">
-                                                                        <span className="badge bg-primary rounded-pill text-white">{cmt.type}</span>
-                                                                    </p>                                            
-                                                                    <p className="text-muted mb-1">
-                                                                        <strong>Category:</strong> {cmt.subSubCategory?.name} / {cmt.subCategory?.name} / {cmt.category?.name}
-                                                                    </p>
-                                                                    <p className="text-muted mb-1">
-                                                                        <strong>Selesai Pada:</strong> {formatLocalTime(cmt.createdAt)}
-                                                                    </p>
-                                                                    <p className="text-muted mb-1">
-                                                                        <strong>By:</strong> {cmt.user?.name}
-                                                                    </p>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    ) : (
-                                                        <p className="text-muted">Belum ada solusi yang ditambahkan.</p>
-                                                    )}
-                                                </div>
+
+                                        <hr />
+
+                                        {/* Detail Ticket */}
+                                        <div className="mb-4">
+                                            <h4>{ticket.title}</h4>
+                                            <small className="text-muted d-block mb-2">
+                                                {ticket.employee?.name} - {ticket.department?.name} - {ticket.division?.name} - {ticket.branch?.code}
+                                            </small>
+                                            <p>{ticket.description}</p>
                                         </div>
+
+                                        <hr />
+
+                                        {/* Pemecahan Masalah */}
+                                        <div className="mb-4">
+                                            <h4 className="mb-3">Pemecahan Masalah</h4>
+                                            {comment.length > 0 ? (
+                                                <div className="list-group">
+                                                {comment.map((cmt, index) => (
+                                                    <div key={index} className="mb-3 p-3 border rounded">
+                                                    <p className="mb-1 text-muted">Solusi:</p>
+                                                    <p className="fw-bold">{cmt.description}</p>
+                                                    <p className="mb-1">
+                                                        <span className="badge bg-primary rounded-pill text-white">{cmt.type}</span>
+                                                    </p>
+                                                    <p className="text-muted mb-1">
+                                                        <strong>Category:</strong> {cmt.subSubCategory?.name} / {cmt.subCategory?.name} / {cmt.category?.name}
+                                                    </p>
+                                                    <p className="text-muted mb-1">
+                                                        <strong>Selesai Pada:</strong> {formatLocalTime(cmt.createdAt)}
+                                                    </p>
+                                                    <p className="text-muted mb-1">
+                                                        <strong>By:</strong> {cmt.user?.name}
+                                                    </p>
+                                                    </div>
+                                                ))}
+                                                </div>
+                                            ) : (
+                                                <p className="text-muted text-center">Belum ada solusi yang ditambahkan.</p>
+                                            )}
+                                        </div>
+
+                                        {/* Form Komentar (Solusi) */}
                                         {ticket.status === "Resolved" && showCommentForm && (
-                                            <>
-                                            <h4>Solusi</h4>
-                                            <div className="row">
-                                                <div className="col">
-                                                    <div className="form-group">
-                                                        <select 
-                                                            className="form-control text-white" 
-                                                            value={comment.type || ""}
-                                                            onChange={(e) => {
-                                                                console.log("Type selected:", e.target.value); // Debugging
-                                                                setComment((prev) => ({ ...prev, type: e.target.value }));
-                                                            }}
-                                                        >
-                                                            <option value="">Pilih Tipe</option>
-                                                            <option value="Malfunction">Malfunction</option>
-                                                            <option value="Human_Error">Human Error</option>
-                                                            <option value="Other">Other</option>
-                                                        </select>
-                                                    </div>
+                                        <>
+                                            <h4 className="mb-3">Tambah Solusi</h4>
+                                            <div className="row mb-3">
+                                                <div className="col-md-6 mb-2">
+                                                    <select
+                                                    className="form-control text-white"
+                                                    value={comment.type || ""}
+                                                    onChange={(e) => setComment((prev) => ({ ...prev, type: e.target.value }))}
+                                                    >
+                                                    <option value="">Pilih Tipe</option>
+                                                    <option value="Malfunction">Malfunction</option>
+                                                    <option value="Human_Error">Human Error</option>
+                                                    <option value="Other">Other</option>
+                                                    </select>
                                                 </div>
-                                                <div className="col">
-                                                    <div className="form-group">
-                                                        <select 
-                                                            className="form-control text-white" 
-                                                            required 
-                                                            value={comment.userId || ""}
-                                                            onChange={(e) => setComment({ ...comment, userId: e.target.value })}
-                                                        >
-                                                            <option value="">Pilih User</option>
-                                                            {user.map((users) => (
-                                                                <option key={users.id} value={users.id}>{users.name}</option>
-                                                            ))}
-                                                        </select>
-                                                    </div>
+                                                <div className="col-md-6">
+                                                    <select
+                                                    className="form-control text-white"
+                                                    required
+                                                    value={comment.userId || ""}
+                                                    onChange={(e) => setComment({ ...comment, userId: e.target.value })}
+                                                    >
+                                                    <option value="">Pilih User</option>
+                                                    {user.map((users) => (
+                                                        <option key={users.id} value={users.id}>{users.name}</option>
+                                                    ))}
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div className="row">
-                                                <div className="col-4">
-                                                    <div className="form-group">
-                                                        <select 
-                                                            className="form-control text-white" 
-                                                            required 
-                                                            value={comment.categoryId || ""}
-                                                            onChange={handleCategoryChange}
-                                                        >
-                                                            <option value="">Pilih Kategori</option>
-                                                            {categories.map((cat) => (
-                                                                <option key={cat.id} value={cat.id}>{cat.name}</option>
-                                                            ))}
-                                                        </select>
-                                                    </div>
+
+                                            <div className="row mb-3">
+                                                <div className="col-md-4 mb-2">
+                                                    <select className="form-control text-white" value={comment.categoryId || ""} onChange={handleCategoryChange}>
+                                                    <option value="">Pilih Kategori</option>
+                                                    {categories.map((cat) => (
+                                                        <option key={cat.id} value={cat.id}>{cat.name}</option>
+                                                    ))}
+                                                    </select>
                                                 </div>
-                                                <div className="col-4">
-                                                    <div className="form-group">
-                                                        <select 
-                                                            className="form-control text-white" 
-                                                            required 
-                                                            value={comment.subCategoryId || ""}
-                                                            onChange={handleSubCategoryChange}
-                                                        >
-                                                            <option value="">Pilih Sub-Kategori</option>
-                                                            {subCategories.map((sub) => (
-                                                                <option key={sub.id} value={sub.id}>{sub.name}</option>
-                                                            ))}
-                                                        </select>
-                                                    </div>
+                                                <div className="col-md-4 mb-2">
+                                                    <select className="form-control text-white" value={comment.subCategoryId || ""} onChange={handleSubCategoryChange}>
+                                                    <option value="">Pilih Sub-Kategori</option>
+                                                    {subCategories.map((sub) => (
+                                                        <option key={sub.id} value={sub.id}>{sub.name}</option>
+                                                    ))}
+                                                    </select>
                                                 </div>
-                                                <div className="col-4">
-                                                    <div className="form-group">
-                                                        <select 
-                                                            className="form-control text-white" 
-                                                            required 
-                                                            value={comment.subSubCategoryId || ""}
-                                                            onChange={(e) => setComment((prev) => ({ ...prev, subSubCategoryId: e.target.value }))}
-                                                        >
-                                                            <option value="">Pilih Sub-Sub-Kategori</option>
-                                                            {subSubCategories.map((subSub) => (
-                                                                <option key={subSub.id} value={subSub.id}>{subSub.name}</option>
-                                                            ))}
-                                                        </select>
-                                                    </div>
+                                                <div className="col-md-4">
+                                                    <select className="form-control text-white" value={comment.subSubCategoryId || ""} onChange={(e) => setComment((prev) => ({ ...prev, subSubCategoryId: e.target.value }))}>
+                                                    <option value="">Pilih Sub-Sub-Kategori</option>
+                                                    {subSubCategories.map((subSub) => (
+                                                        <option key={subSub.id} value={subSub.id}>{subSub.name}</option>
+                                                    ))}
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div className="row">
-                                                <div className="col">
-                                                    <textarea 
-                                                        className="form-control mb-2" 
-                                                        placeholder="Deskripsi pekerjaan..." 
-                                                        value={comment.description || ""} // Pastikan nilai diambil dari state
-                                                        onChange={(e) => {
-                                                            console.log("Description entered:", e.target.value); // Debugging
-                                                            setComment((prev) => ({ ...prev, description: e.target.value }));
-                                                        }}
-                                                    />
-                                                    <button className="btn btn-warning" onClick={submitComment} disabled={loading}>
-                                                        {loading ? "Menyimpan..." : "Simpan Komentar"}
-                                                    </button>
-                                                </div>
+
+                                            <div className="mb-3">
+                                                <textarea
+                                                    className="form-control mb-2"
+                                                    placeholder="Deskripsi pekerjaan..."
+                                                    value={comment.description || ""}
+                                                    onChange={(e) => setComment((prev) => ({ ...prev, description: e.target.value }))}
+                                                />
+                                                <button className="btn btn-warning" onClick={submitComment} disabled={loading}>
+                                                    {loading ? "Menyimpan..." : "Simpan Komentar"}
+                                                </button>
                                             </div>
-                                            </>
+                                        </>
                                         )}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    {/* Footer */}
                     <footer className="footer fixed">
                         <Footer />
                     </footer>
                 </div>
             </div>
         </div>
+
     )
 }

@@ -114,7 +114,7 @@ export default function SubSubCategoryChart() {
   return (
     <div>
       <div className="d-flex justify-content-between gap-2 my-2">
-        <h4 className="mb-0">Total Tiket</h4>
+        <h4 className="mb-0">Grafik Total Permasalahan</h4>
         <div className="d-flex align-items-center  gap-2">
           <select
             className="form-select text-center w-auto mx-1 border-0"

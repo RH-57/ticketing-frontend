@@ -167,7 +167,7 @@ export default function Branch() {
                             </nav>
                         </div>
                         <div className="row">
-                            <div className="col-md-6 grid-margin stretch-card">
+                            <div className="col-md-8 grid-margin stretch-card mb-4">
                                 <div className="card">
                                     <div className="card-body">
                                         <h4 className="card-title">{id ? "Edit Branch" : "Add Branch"}</h4>
@@ -181,30 +181,32 @@ export default function Branch() {
                                             )
                                         }
                                         <form onSubmit={handleSubmit} className="form-sample">
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputUsername1">Code</label>
-                                                <input type="text" id="code" value={code} className="form-control" onChange={(e) => setCode(e.target.value)} placeholder="Code" />
+                                            <div className="form-group row">
+                                                <label htmlFor="exampleInputUsername1"  className="col-md-2 col-form-label">Code</label>
+                                                <div className="col-md-10">
+                                                    <input type="text" id="code" value={code} className="form-control text-white" onChange={(e) => setCode(e.target.value)} placeholder="Code" />
+                                                </div>                                                
                                             </div>
-                                            <div className="form-group">
-                                                <label htmlFor="exampleInputEmail1">Branch Name</label>
-                                                <input type="text" value={name} className="form-control" onChange={(e) => setName(e.target.value)} placeholder="Branch Name" />
+                                            <div className="form-group row">
+                                                <label htmlFor="exampleInputEmail1" className="col-sm-2 col-form-label">Branch Name</label>
+                                                <div className="col-sm-10">
+                                                    <input type="text" value={name} className="form-control text-white" onChange={(e) => setName(e.target.value)} placeholder="Branch Name" />
+                                                </div>
                                             </div>
-                                            <button type="submit" className="btn btn-primary mr-2">{id ? "Update" : "Save"}</button>
-                                            <button type="button" className="btn btn-dark"
-                                                onClick={() => {
-                                                    setId(null)
-                                                    setCode('')
-                                                    setName('')
-                                                }}
-                                            >Cancel    
-                                            </button>
+                                            <div className="form-group row">
+                                                <div className="col-sm-10">
+                                                    <button type="submit" className="btn btn-primary mr-2">{id ? "Update" : "Save"}</button>
+                                                    <button type="button" className="btn btn-dark"
+                                                        onClick={() => {
+                                                            setId(null)
+                                                            setCode('')
+                                                            setName('')
+                                                        }}
+                                                    >Cancel    
+                                                    </button>
+                                                </div>
+                                            </div>                
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 grid-margin stretch-card">
-                                <div className="card">
-                                    <div className="card-body">
                                         <div className="d-flex justify-content-between align-items-center mb-3">
                                             <h4 className="card-title mb-0">Branches List</h4>
                                             <input
@@ -216,7 +218,7 @@ export default function Branch() {
                                             />
                                         </div>
                                         <div className="table-responsive" style={{ maxHeight: '220px', overflowY: 'auto' }}>
-                                            <table className="table table-hover">
+                                            <table className="table table-hover text-white">
                                                 <thead>
                                                     <tr>
                                                         <th>Code</th>

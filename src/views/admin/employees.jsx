@@ -212,22 +212,22 @@ export default function Employee() {
                             </nav>
                         </div>
                         <div className="row">
-                            <div className="col-md-6 grid-margin stretch-card">
+                            <div className="col-md-8 grid-margin stretch-card px-1">
                                 <div className="card">
                                     <div className="card-body">
-                                        <h4 className="card-title">{id ? "Edit Karyawan" : "Tambah Karyawan"}</h4>
+                                        <h4 className="card-title">{id ? "Edit Employee" : "Add Employee"}</h4>
                                         {message && (
                                             <div className={`alert ${message.includes("success") ? "alert-success" : "alert-danger"} mt-2`}>
                                                 {message}
                                             </div>
                                         )}
-                                        <form onSubmit={handleSubmit} className="form-sample">
+                                        <form onSubmit={handleSubmit} className="form-sample mb-4">
                                             <div className="row">
                                                 <div className="col-4">
                                                     <div className="form-group">
-                                                        <label>Cabang</label>
+                                                        <label>Branch</label>
                                                         <select 
-                                                            className="form-control form-control-sm"
+                                                            className="form-control form-control-sm text-white"
                                                             value={branchId}
                                                             onChange={handleBranchChange}
                                                         >
@@ -242,9 +242,9 @@ export default function Employee() {
                                                 </div>
                                                 <div className="col-4">
                                                     <div className="form-group">
-                                                        <label>Divisi</label>
+                                                        <label>Division</label>
                                                         <select 
-                                                            className="form-control form-control-sm"
+                                                            className="form-control form-control-sm text-white"
                                                             value={divisionId}
                                                             onChange={handleDivisionChange}
                                                         >
@@ -259,9 +259,9 @@ export default function Employee() {
                                                 </div>
                                                 <div className="col-4">
                                                     <div className="form-group">
-                                                        <label>Departemen</label>
+                                                        <label>Department</label>
                                                         <select 
-                                                            className="form-control form-control-sm"
+                                                            className="form-control form-control-sm text-white"
                                                             value={departmentId}
                                                             onChange={(e) => setDepartmentId(e.target.value)}
                                                         >
@@ -277,18 +277,13 @@ export default function Employee() {
                                             </div>
                                             
                                             <div className="form-group">
-                                                <label>Nama Karyawan</label>
-                                                <input type="text" className="form-control" placeholder="Nama Karyawan" value={name} onChange={(e) => setName(e.target.value)}></input>
+                                                <label>Employee Name</label>
+                                                <input type="text" className="form-control text-white" placeholder="Nama Karyawan" value={name} onChange={(e) => setName(e.target.value)}></input>
                                             </div>
                                             <button type="submit" className="btn btn-primary mr-2">{id ? "Update" : "Save"}</button>
                                             <button type="button" className="btn btn-dark" onClick={resetForm}>Cancel</button>
                                         </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-6 grid-margin stretch-card">
-                                <div className="card">
-                                    <div className="card-body">
+                                        <hr/>
                                         <div className="d-flex justify-content-between align-items-center mb-3">
                                             <h4 className="card-title mb-0">List Karyawan</h4>
                                             <input 
@@ -301,7 +296,7 @@ export default function Employee() {
                                             /> 
                                         </div>
                                         <div className="table-responsive" style={{maxHeight: '220px', overflow: 'auto'}}>
-                                            <table className="table table-hover">
+                                            <table className="table table-hover text-white">
                                                 <thead>
                                                     <tr>
                                                         <th>Nama</th>
@@ -338,7 +333,7 @@ export default function Employee() {
                                             </table>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                             </div>
                         </div>
                     </div>

@@ -355,67 +355,68 @@ export default function Dashboard() {
                             </div> 
                         </div>
                         <div className="row">
-                            <div className="col">
-                                <div className="wrapper">
-                                    <div className="row">
-                                        <div className="col-md-4 grid-margin stretch-card px-1 py-2">
-                                            <div className="card">
-                                                <div className="card-body">
-                                                    <div className="d-flex flex-row justify-content-between">
-                                                        <h4 className="card-title mb-1">Trend</h4>
-                                                        <Link to="/admin/detail-trend">Detail</Link>
-                                                    </div>
-                                                    <div className="row d-flex justify-content-center ">
-                                                        <div className="col-12">
-                                                            <ChartTicket />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                            <div className="col-md-4 grid-margin stretch-card px-1 py-2 pb-0">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex flex-row justify-content-between">
+                                            <h4 className="card-title mb-1">Trend</h4>
+                                            <Link to="/admin/detail-trend">Detail</Link>
                                         </div>
-                                        <div className="col-md-4 grid-margin stretch-card px-1 py-2">
-                                            <div className="card">
-                                                <div className="card-body">
-                                                    <div className="d-flex flex-row justify-content-between">
-                                                        <h4 className="card-title mb-1">Klasifikasi Masalah</h4>
-                                                    </div>
-                                                    <div className="row">
-                                                        <div className="col-12">
-                                                            <ReportByType />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4 grid-margin stretch-card px-1 py-2">
-                                            <div className="card">
-                                                <div className="card-body">
-                                                    <div className="d-flex flex-row justify-content-between">
-                                                        <h4 className="card-title mb-1">Departemen Paling Aktif</h4>
-                                                    </div>
-                                                    <div className="row">
-                                                        <div className="col-12">
-                                                            <MostActiveDepartment />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-md-4 grid-margin stretch-card px-1 py-2">
-                                            <div className="card">
-                                                <div className="card-body">
-                                                    <div className="d-flex flex-row justify-content-between">
-                                                        <h4 className="card-title mb-1">Komponen Sering Rusak</h4>
-                                                    </div>
-                                                    <div className="row">
-                                                        <div className="col-12">
-                                                            <MostFreqTroubleComponents />
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <div className="row d-flex justify-content-center ">
+                                            <div className="col-12">
+                                                <ChartTicket />
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div className="col-md-4 grid-margin stretch-card px-1 py-2 pb-0">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex flex-row justify-content-between">
+                                            <h4 className="card-title mb-1">Klasifikasi Masalah</h4>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <ReportByType />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-4 grid-margin stretch-card px-1 py-2 pb-0">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex flex-row justify-content-between">
+                                            <h4 className="card-title mb-1">Departemen Paling Aktif</h4>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <MostActiveDepartment />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-md-4 grid-margin stretch-card px-1 py-2 pb-0">
+                                <div className="card">
+                                    <div className="card-body">
+                                        <div className="d-flex flex-row justify-content-between">
+                                            <h4 className="card-title mb-1">Komponen Sering Rusak</h4>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <MostFreqTroubleComponents />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col">
+                                <div className="wrapper">
+                                    
                                 </div>
                             </div>
                         </div>
