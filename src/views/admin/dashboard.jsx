@@ -144,7 +144,7 @@ export default function Dashboard() {
                 <Navbar />
                 {/* partial */}
                 <div className="main-panel">
-                    <div className="content-wrapper px-3 py-1">
+                    <div className="content-wrapper px-3 py-2">
                         <div className="row">
                             <div className="col">
                                 <div className="wrapper">
@@ -304,7 +304,7 @@ export default function Dashboard() {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-md-12 grid-margin stretch-card px-1 py-2 pb-0">
+                            <div className="col-md-12 grid-margin stretch-card px-1 py-2 pb-0 mb-0">
                                 <div className="card">
                                     <div className="card-body">
                                         <div className="d-flex flex-row justify-content-between">
@@ -355,7 +355,7 @@ export default function Dashboard() {
                             </div> 
                         </div>
                         <div className="row">
-                            <div className="col-md-4 grid-margin stretch-card px-1 py-2 pb-0">
+                            <div className="col-md-4 grid-margin stretch-card px-1 py-1 pb-0 mb-0">
                                 <div className="card">
                                     <div className="card-body">
                                         <div className="d-flex flex-row justify-content-between">
@@ -370,7 +370,7 @@ export default function Dashboard() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-4 grid-margin stretch-card px-1 py-2 pb-0">
+                            <div className="col-md-4 grid-margin stretch-card px-1 py-1 pb-0 mb-0">
                                 <div className="card">
                                     <div className="card-body">
                                         <div className="d-flex flex-row justify-content-between">
@@ -384,7 +384,7 @@ export default function Dashboard() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-4 grid-margin stretch-card px-1 py-2 pb-0">
+                            <div className="col-md-4 grid-margin stretch-card px-1 py-1 pb-0 mb-0">
                                 <div className="card">
                                     <div className="card-body">
                                         <div className="d-flex flex-row justify-content-between">

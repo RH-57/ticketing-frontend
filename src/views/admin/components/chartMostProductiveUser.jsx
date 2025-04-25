@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Cookies from 'js-cookie'
 import {
   BarChart,
   Bar,
@@ -10,9 +11,11 @@ import {
 import api from '../../../services/api'
 
 export default function ChartMostProductiveUser() {
+  const token = Cookies.get('token')
   const [data, setData] = useState([])
   const [year, setYear] = useState(new Date().getFullYear())
   const [years, setYears] = useState([])
+  const [totalTicketClosed, setTotalTicketClosed] = useState('')
 
   const fetchData = async (selectedYear) => {
     try {
@@ -34,15 +37,28 @@ export default function ChartMostProductiveUser() {
     setYears(yearList)
   }
 
+  const fetchTotalTicketClosed = async (selectedYear) => {
+    if (token) {
+      api.defaults.headers.common['Authorization'] = token
+      try {
+        const response = await api.get(`/api/admin/dashboards/total-ticket-closed?year=${selectedYear}`)
+        setTotalTicketClosed(response.data.data)    
+      } catch (error) {
+        console.error('Failed to fetch total ticket closed',error)
+      }
+    }
+  }
+
   useEffect(() => {
     generateYears()
     fetchData(year)
+    fetchTotalTicketClosed(year)
   }, [year])
 
   return (
     <div style={{ width: '100%', height: '250px' }}>
       <div className="d-flex justify-content-between align-items-center mb-2">
-        <h4 className="mb-0">Selesaikan Tiket</h4>
+        <h4 className="mb-0">{totalTicketClosed} Tiket Selesai</h4>
         <div className="d-flex align-items-center gap-2">
           <select
             className="form-select text-center w-auto mx-1 border-0"

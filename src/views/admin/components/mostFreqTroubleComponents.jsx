@@ -24,7 +24,7 @@ export default function MostFreqTroubleComponents() {
 
     return (
         <div className="table-responsive">
-            <table className="table table-hover">
+            <table className="table">
                 <thead>
                     <tr>
                         <th>No.</th>
