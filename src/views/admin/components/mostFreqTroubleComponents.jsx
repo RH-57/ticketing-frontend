@@ -24,12 +24,12 @@ export default function MostFreqTroubleComponents() {
 
     return (
         <div className="table-responsive">
-            <table className="table">
-                <thead>
+            <table className="table table-hover text-white table-bordered" style={{ minWidth: '100%', borderCollapse: 'collapse' }}>
+                <thead className="bg-dark" style={{ position: 'sticky', top: 0, zIndex: 1 }}>
                     <tr>
-                        <th>No.</th>
-                        <th>Nama Komponen</th>
-                        <th>Total</th>
+                        <th style={{ backgroundColor: '#212529' }}>No.</th>
+                        <th style={{ backgroundColor: '#212529' }}>Nama Komponen</th>
+                        <th style={{ backgroundColor: '#212529' }}>Total</th>
                     </tr>
                 </thead>
                 <tbody>

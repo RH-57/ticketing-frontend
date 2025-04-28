@@ -26,12 +26,12 @@ export default function MostActiveDepartment() {
 
     return (
         <div className="table-responsive">
-            <table className="table table-hover">
-                <thead>
+            <table className="table table-hover text-white table-bordered" style={{ minWidth: '100%', borderCollapse: 'collapse' }}>
+                <thead className="bg-dark" style={{ position: 'sticky', top: 0, zIndex: 1 }}>
                     <tr>
-                        <th>No.</th>
-                        <th>Nama Departemen</th>
-                        <th>Total Tiket</th>
+                        <th style={{ backgroundColor: '#212529' }}>No.</th>
+                        <th style={{ backgroundColor: '#212529' }}>Nama Departemen</th>
+                        <th style={{ backgroundColor: '#212529' }}>Total Tiket</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -106,6 +106,16 @@ export default function Sidebar() {
                     </a>
                 </li>
                 )}
+                {showMenu && (
+                <li className="nav-item">
+                    <a className="nav-link" href="">
+                        <span className="menu-icon">
+                            <i className="mdi mdi-google-analytics" />
+                        </span>
+                        <span className="menu-title">Analisa</span>
+                    </a>
+                </li>
+                )}
                 <li className="nav-item menu-items mt-auto">
                     <button
                         className="nav-link text-danger"

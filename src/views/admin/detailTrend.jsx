@@ -19,7 +19,10 @@ export default function DetailTrend() {
                 <div className="main-panel">
                     <div className="content-wrapper px-3 py-3">
                         <div className="page-header">
-                            <h3 className="page-title">Detail Trend</h3>
+                            <div className="d-flex align-items-center px-1 ms-2 gap-5">
+                                <h3 className="page-title">Detail Trend</h3>
+                                <button className="btn btn-danger" style={{ marginLeft: '10px' }}><strong>Analisa</strong></button>
+                            </div>
                             <nav aria-label="breadcrumb">
                                 <ol className="breadcrumb">
                                     <li className="breadcrumb-item"><Link to="/admin/dashboard">Dasboard</Link></li>
@@ -67,14 +70,14 @@ export default function DetailTrend() {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="col-8 grid-margin stretch-card px-1 mb-2">
+                            <div className="col-md-8 col-sm-4 grid-margin stretch-card px-1 mb-2">
                                 <div className="card">
                                     <div className="card-body">
                                         <SubCategoryComparisonChart />
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-4 grid-margin stretch-card px-1 mb-2">
+                            <div className="col-md-4 col-sm-4 grid-margin stretch-card px-1 mb-2">
                                 <div className="card">
                                     <div className="card-body">
                                         <ListTotalReportBySubSubCategory />

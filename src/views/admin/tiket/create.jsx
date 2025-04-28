@@ -129,7 +129,7 @@ export default function CreateTicket() {
                 <div className="main-panel">
                     <div className="content-wrapper px-3 py-1">
                         <div className="page-header">
-                            <h3 className="page-title">Manage Tickets</h3>
+                            <h3 className="page-title">Create Tickets</h3>
                             <nav className="breadcrumb">
                                 <ol className="breadcrumb">
                                     <li className="breadcrumb-item"><Link to="/admin/dashboard">Dashboard</Link></li>

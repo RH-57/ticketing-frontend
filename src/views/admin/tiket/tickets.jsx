@@ -153,7 +153,7 @@ export default function Ticket() {
                                                 <tbody>
                                                     {
                                                         tickets.length > 0
-                                                            ? tickets.slice(0,10).map((ticket, index) => (
+                                                            ? tickets.map((ticket, index) => (
                                                                 <tr key={index}>
                                                                     <td>
                                                                         <span className="badge badge-pill font-weight-bold">
