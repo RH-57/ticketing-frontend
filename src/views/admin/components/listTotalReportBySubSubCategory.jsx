@@ -9,15 +9,13 @@ export default function ListTotalReportBySubSubCategory() {
     const [years, setYears] = useState([])
 
     const generateYears = () => {
-        const currentyear = new Date().getFullYear()
-        const yearList = []
-        for (
-            let y = currentyear; y >= currentyear - 2; y--
-        ) {
-            yearList.push(y)
-        }
-
-        setYears(yearList)
+      const currentYear = new Date().getFullYear()
+      const startYear = currentYear - 2
+      const yearList = []
+      for (let y = startYear; y <= currentYear; y++) {
+        yearList.push(y)
+      }
+      setYears(yearList)
     }
 
     const fetchData = async (selectedYear) => {

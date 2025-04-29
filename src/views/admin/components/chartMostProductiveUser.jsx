@@ -30,8 +30,9 @@ export default function ChartMostProductiveUser() {
 
   const generateYears = () => {
     const currentYear = new Date().getFullYear()
+    const startYear = currentYear - 2
     const yearList = []
-    for (let y = currentYear; y >= currentYear - 2; y--) {
+    for (let y = startYear; y <= currentYear; y++) {
       yearList.push(y)
     }
     setYears(yearList)
