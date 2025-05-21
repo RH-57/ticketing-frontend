@@ -12,6 +12,8 @@ import Navbar from '../../components/Navbar'
 export default function Employee() {
 
     const [employees, setEmployees] = useState([])
+    const [selectedDepartment, setSelectedDepartment] = useState("all");
+    const [allDepartments, setAllDepartments] = useState([]) 
     const [departments, setDepartments] = useState([])
     const [divisions, setDivisions] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
@@ -41,6 +43,7 @@ export default function Employee() {
             try {
                 const response = await api.get('/api/admin/employees')
                 setEmployees(response.data.data)
+                setSelectedDepartment("all") // Pastikan state selectedDepartment direset ke "all"
             } catch(error) {
                 console.error("there was an error fetching the employees", error)
             }
@@ -61,9 +64,40 @@ export default function Employee() {
         }
     }
 
+    const fetchAllDepartments = async () => {
+        if(token) {
+            api.defaults.headers.common['Authorization'] = token
+            try {
+                const response = await api.get('/api/admin/departments')
+                setAllDepartments(response.data.data)
+            } catch (error) {
+                console.error('Error fetching departments', error)
+            }
+        }
+    }
+
+    const filterByDepartment = (deptId) => {
+        console.log("Filtering by department:", deptId)
+        setSelectedDepartment(deptId);
+
+        if (deptId === "all") {
+            fetchDataEmployees();
+        } else {
+            api.defaults.headers.common['Authorization'] = token;
+            api.get(`/api/admin/employees/department?department_id=${deptId}`)
+                .then(response => {
+                    setEmployees(response.data.data);
+                })
+                .catch(error => {
+                    console.error('Error fetching employees by department', error);
+                });
+        }
+    };
+
     useEffect(() => {
         fetchDataEmployees()
         fetchBranches()
+        fetchAllDepartments()
     }, [])
 
     const searchEmployee = async() => {
@@ -286,14 +320,31 @@ export default function Employee() {
                                         <hr/>
                                         <div className="d-flex justify-content-between align-items-center mb-3">
                                             <h4 className="card-title mb-0">List Karyawan</h4>
-                                            <input 
-                                                type="text" 
-                                                className="form-control w-50 ml-auto" 
-                                                placeholder="Search.." 
-                                                value={searchQuery}
-                                                onChange={(e) => setSearchQuery(e.target.value)}
-                                                onKeyUp={(e) => e.key === 'Enter' && searchEmployee()}
-                                            /> 
+                                            <div className="d-flex">
+                                               <select 
+                                                    className="form-control mr-2 text-white" 
+                                                    style={{ width: '150px' }}
+                                                    value={selectedDepartment}
+                                                    onChange={(e) => filterByDepartment(e.target.value)}
+                                                    >
+                                                    <option value="all">All Departments</option>
+                                                    {allDepartments.map(dept => (
+                                                        <option key={dept.id} value={dept.id}>
+                                                        {dept.division?.name ? `${dept.name} - ${dept.division.name}` : dept.name}
+                                                        </option>
+                                                    ))}
+                                                </select>
+
+                                                <input 
+                                                    type="text" 
+                                                    className="form-control text-white" 
+                                                    style={{width: '200px'}}
+                                                    placeholder="Search.." 
+                                                    value={searchQuery}
+                                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                                    onKeyUp={(e) => e.key === 'Enter' && searchEmployee()}
+                                                />
+                                            </div>
                                         </div>
                                         <div className="table-responsive" style={{maxHeight: '220px', overflow: 'auto'}}>
                                             <table className="table table-hover text-white">
