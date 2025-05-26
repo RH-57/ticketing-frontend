@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import {
-    LineChart,
-    Line,
+    AreaChart,
+    Area,
     XAxis,
     YAxis,
     CartesianGrid,
@@ -19,35 +19,15 @@ export default function DetailTrendTicket() {
     const years = Array.from({ length: currentYear - startYear + 1 }, (_, i) => startYear + i)
 
     const [year, setYear] = useState(currentYear)
-    const [category, setCategory] = useState("")
     const [type, setType] = useState("")
     const [data, setData] = useState([])
-    const [categories, setCategories] = useState([])
     const token = Cookies.get('token')
 
-    const fetchCategories = async () => {
-        if (token) {
-            api.defaults.headers.common['Authorization'] = token
-            try {
-                const response = await api.get('/api/admin/categories')
-                if (response.data.status) {
-                    const formattedCategories = response.data.data.map(cat => ({
-                        id: cat.id,
-                        name: cat.name
-                    }))
-                    setCategories(formattedCategories)
-                }
-            } catch (error) {
-                console.error("Error fetching categories", error)
-            }
-        }
-    }
 
-    const fetchData = async (selectedYear, selectedCategory, selectedType) => {
+    const fetchData = async (selectedYear, selectedType) => {
         try {
             const response = await api.get(`/api/admin/tickets/detail-trend/${selectedYear}`, {
                 params: { 
-                    categoryId: selectedCategory || undefined,
                     type: selectedType || undefined 
                 }
             })
@@ -60,9 +40,8 @@ export default function DetailTrendTicket() {
     }
 
     useEffect(() => {
-        fetchCategories()
-        fetchData(year, category, type)
-    }, [year, category, type])
+        fetchData(year, type)
+    }, [year, type])
 
     return (
         <div>
@@ -77,18 +56,6 @@ export default function DetailTrendTicket() {
                     >
                         {years.map(y => (
                             <option key={y} value={y}>{y}</option>
-                        ))}
-                    </select>
-            
-                    <select
-                        className="form-select text-center w-auto mx-1 border-0"
-                        style={{ backgroundColor: '#212529', color: '#fff' }}
-                        value={category}
-                        onChange={(e) => setCategory(e.target.value)}
-                    >
-                        <option value="">All Category</option>
-                        {categories.map(cat => (
-                            <option key={cat.id} value={cat.id}>{cat.name}</option>
                         ))}
                     </select>
                 
@@ -107,14 +74,31 @@ export default function DetailTrendTicket() {
             </div>
 
             <ResponsiveContainer width="100%" height={250}>
-                <LineChart data={data} margin={{ left: 0, right: 10, bottom: 5 }}>
+                <AreaChart data={data} margin={{ left: 0, right: 10, bottom: 5 }}>
                     <CartesianGrid stroke="#575757" strokeDasharray="2 2" />
                     <XAxis dataKey="month" angle={-45} textAnchor="end" interval={0} />
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="ticket" stroke="#8884d8" strokeWidth={2} />
-                </LineChart>
+
+                    {data.length > 0 &&
+                        Object.keys(data[0])
+                            .filter(key => key !== 'month')
+                            .map((key, index) => {
+                                const colors = ['#f01111', '#ecf011', '#8884d8', '#82ca9d']
+                                const color = colors[index % colors.length]
+                                return (
+                                    <Area
+                                        key={key}
+                                        type="monotone"
+                                        dataKey={key}
+                                        stroke={color}
+                                        fill={color}
+                                        fillOpacity={0.1}
+                                    />
+                                )
+                            })}
+                </AreaChart>
             </ResponsiveContainer>
         </div>
     )
