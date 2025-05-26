@@ -156,8 +156,10 @@ export default function DetailTicket() {
             toast.success(`${newStatus}`)
 
         } catch (error) {
-            console.error('Error', error)
+            console.log('Error', error)
             toast.error('Error mengubah status')
+        } finally {
+            setLoading(false)
         }
 
         if(newStatus === "Resolved") {
@@ -236,16 +238,50 @@ export default function DetailTicket() {
     
     if (!ticket) return <p>Loading...</p>;
 
+    const statusTransitions = {
+        Open: ['In_Progress', 'Pending'],
+        In_Progress: ['Resolved', 'Pending'],
+        Pending: ['In_Progress', 'Resolved'],
+        Resolved: ['Closed'],
+        Closed: []
+    }
+
+    const statusLabel = {
+        In_Progress: "Kerjakan",
+        Pending: "Tunda",
+        Resolved: "Selesai",
+        Closed: "Tutup Tiket"
+    }
+
     const getButton = () => {
-        switch (ticket.status) {
-            case "Open":
-                return <button className="btn btn-success font-weight-bold text-white" onClick={() => updateTicketStatus("In_Progress")} disabled={loading}>Kerjakan</button>
-            case "In_Progress":
-                return <button className="btn btn-primary font-weight-bold text-white" onClick={() => updateTicketStatus("Resolved")} disabled={loading}>Selesai</button>
-            case "Resolved":
-                return <button className="btn btn-danger font-weight-bold text-white" onClick={() => updateTicketStatus("Closed")} disabled={!commentSubmited || loading}>Tutup Tiket</button>
+        if (!ticket) return null
+
+        const availableStatuses = statusTransitions[ticket.status] || []
+
+        return availableStatuses.map((nextStatus) => (
+            <button
+                key={nextStatus}
+                className={`btn ${getButtonColor(nextStatus)} font-weight-bold text-white m-1`}
+                onClick={() => updateTicketStatus(nextStatus)}
+                disabled={nextStatus === "Closed" && !commentSubmited || loading}
+            >
+                {statusLabel[nextStatus] || nextStatus}
+            </button>
+        ))
+    }
+
+    const getButtonColor = (status) => {
+        switch (status) {
+            case 'In_Progress':
+                return 'btn-success'
+            case 'Pending':
+                return 'btn-warning'
+            case 'Resolved':
+                return 'btn-primary'
+            case 'Closed':
+                return 'btn-danger'
             default:
-                return null
+                return 'btn-secondary'
         }
     }
     
@@ -287,7 +323,9 @@ export default function DetailTicket() {
                                                 Issued: {ticket.user?.name} - {formatLocalTime(ticket.createdAt)}
                                                 </small>
                                             </div>
-                                            {getButton()}
+                                            <div className="d-flex flex-wrap">
+                                               {getButton()}
+                                            </div>
                                         </div>
 
                                         <hr />
